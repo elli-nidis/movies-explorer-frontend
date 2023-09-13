@@ -3,13 +3,9 @@
   /* min-width: 320px; */
   display: flex;
   flex-direction: column;
-  /* justify-items: center; */
   align-items: center;
-  /* box-sizing: border-box; */
-  
   padding: 70px 0px;
   background-color: #073042;
-  ;
 }
 
 .promo__content {
@@ -49,12 +45,13 @@
   padding: 0;
 }
 
-.promo-button {
+.promo__button {
   width: 129px;
   height: 36px;
   border: 1px solid #fff;
   border-radius: 3px;
   background: none;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.33;
@@ -64,6 +61,6 @@
   padding: 0;
 }
 
-.promo-button:hover {
+.promo__button:hover {
   opacity: .6;
 }

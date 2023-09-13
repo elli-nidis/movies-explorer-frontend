@@ -13,7 +13,7 @@ function Promo() {
         Листайте ниже, чтобы узнать больше про этот проект и&nbsp;его создателя.
         </p>
         <button
-          className="promo-button"
+          className="promo__button"
           type="button"
           /* onClick={} */
           aria-label="узнать больше">

@@ -1,5 +1,5 @@
 import React from "react";
-import './AboutProject.css';
+import "./AboutProject.css";
 import { SectionCaption } from "../SectionCaption/SectionCaption";
 
 

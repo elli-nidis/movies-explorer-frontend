@@ -3,6 +3,8 @@ import React from 'react';
 import './App.css';
 import { Promo } from '../Promo/Promo';
 import { AboutProject } from '../AboutProject/AboutProject';
+import { Techs } from '../Techs/Techs';
+import { AboutMe } from '../AboutMe/AboutMe';
 
 function App() {
   return (
@@ -10,8 +12,8 @@ function App() {
       {/* <Header /> */}
       <Promo />
       <AboutProject />
-      {/* <Techs /> */}
-      {/* <AboutMe /> */}
+      <Techs />
+      <AboutMe />
       {/* <Portfolio /> */}
       {/* <Footer /> */}
     </div>

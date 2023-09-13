@@ -1,0 +1,17 @@
+
+.section-caption{
+  display: grid;
+  grid-template-columns: 1140px;
+  grid-template-rows: 50px;
+}
+.section-caption__title {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.21;
+  letter-spacing: -4%;
+  color: #dadada;
+  border-bottom: 1px solid #fff;
+  margin: 0;
+  padding: 0;
+}

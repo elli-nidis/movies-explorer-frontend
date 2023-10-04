@@ -1,6 +1,7 @@
 import React from "react";
 import "./AboutMe.css";
 import { SectionCaption } from "../SectionCaption/SectionCaption";
+import { Portfolio } from "../Portfolio/Portfolio";
 import photo from '../../images/ekaterina.png';
 
 function AboutMe() {
@@ -19,8 +20,9 @@ function AboutMe() {
         front-end разработкой. Хочу развиваться в&nbsp;этом направлении и&nbsp;стать достойным 
         представителем профессии.
         </p>
-        <a href="#" className="about-me__link">Github</a>
+        <a href="https://github.com/elli-nidis" className="about-me__link" target="_blank" rel="noopener noreferrer">Github</a>
       </div>
+      <Portfolio />
     </section>
   );
 }

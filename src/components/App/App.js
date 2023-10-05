@@ -37,15 +37,15 @@ function App() {
       <Routes>
         <Route path="/" element={
            <>
-            <Header
+            {/* <Header
               isLoggedIn={loggedIn}
               handleLogOut={handleLogOut}
-            />
+            /> */}
             <Promo />
-            <AboutProject />
+            {/* <AboutProject />
             <Techs />
             <AboutMe />
-            <Footer />
+            <Footer /> */}
            </>
         }
       />

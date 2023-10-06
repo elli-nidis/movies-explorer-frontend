@@ -1,7 +1,10 @@
 
 .section-caption{
+  width: 100%;
+  max-width: 1140px;
   display: grid;
-  grid-template-columns: 1140px;
+  /* grid-template-columns: 1140px; */
+  grid-template-columns: 1fr;
   grid-template-rows: 50px;
 }
 .section-caption__title {
@@ -14,4 +17,15 @@
   border-bottom: 1px solid #fff;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 610px) {
+  .section-caption__title {
+    font-size: 18px;
+  }
+
+  .section-caption__title_dark {
+    /* border-bottom: 1px solid #000; */
+    border-color: #000;
+  }
 }

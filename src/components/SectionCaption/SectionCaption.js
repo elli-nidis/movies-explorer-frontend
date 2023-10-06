@@ -2,10 +2,10 @@ import React from "react";
 import './SectionCaption.css';
 
 
-function SectionCaption({ name }) {
+function SectionCaption({ name, modifier }) {
   return (
     <div className="section-caption">
-      <h2 className="section-caption__title">{name}</h2>
+      <h2 className={`section-caption__title ${modifier}`}>{name}</h2>
     </div>
   );
 }

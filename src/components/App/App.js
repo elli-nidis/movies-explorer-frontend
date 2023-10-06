@@ -41,11 +41,11 @@ function App() {
               isLoggedIn={loggedIn}
               handleLogOut={handleLogOut}
             /> */}
-            <Promo />
-            {/* <AboutProject />
-            <Techs />
-            <AboutMe />
-            <Footer /> */}
+            {/* <Promo /> */}
+            <AboutProject />
+            {/* <Techs /> */}
+            {/* <AboutMe /> */}
+            {/* <Footer /> */}
            </>
         }
       />

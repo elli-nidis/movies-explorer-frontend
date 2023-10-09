@@ -5,7 +5,7 @@ import { SectionCaption } from "../SectionCaption/SectionCaption";
 function Techs() {
   return (
     <section className="techs">
-      <SectionCaption name="Технологии" />
+      <SectionCaption name="Технологии" modifier="section-caption__title_dark"/>
       <div className="techs__content">
         <h3 className="techs__content-title">7&nbsp;технологий</h3>
         <p className="techs__content-text">

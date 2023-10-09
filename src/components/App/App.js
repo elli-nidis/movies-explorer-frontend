@@ -42,9 +42,9 @@ function App() {
               handleLogOut={handleLogOut}
             /> */}
             {/* <Promo /> */}
-            <AboutProject />
+            {/* <AboutProject /> */}
             {/* <Techs /> */}
-            {/* <AboutMe /> */}
+            <AboutMe />
             {/* <Footer /> */}
            </>
         }

@@ -1,21 +1,24 @@
 .techs {
   width: 100%;
-  /* min-width: 320px; */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px 0px;
+  padding: 100px 70px;
   background-color: #272727;
 }
 
 .techs__content {
+  width: 100%;
+  max-width: 1140px;
   display: grid;
-  grid-template-columns: 1140px;
-  grid-template-rows: 148px 66px 160px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 58px 40px;
+  row-gap: 26px;
+  padding-top: 90px;
 }
 
 .techs__content-title {
-  align-self: self-end;
   justify-self: center;
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 50px;
@@ -28,7 +31,8 @@
 }
 
 .techs__content-text {
-  align-self: self-end;
+  display: grid;
+  grid-template-columns: 460px;
   justify-self: center;
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 14px;
@@ -38,19 +42,18 @@
   color: #fff;
   text-align: center;
   margin: 0;
-  padding: 0 calc((1140px - 500px) / 2);
 }
 
 .techs__stack {
-  align-self: self-end;
+  width: 100%;
   justify-self: center;
   display: grid;
-  grid-template-columns: repeat(7, 90px);
+  grid-template-columns: repeat(auto-fit, 90px);
   grid-template-rows: 60px;
   column-gap: 10px;
+  justify-content: center;
   margin: 0;
-  padding: 0;
-  
+  padding: 74px 0px 0px 0px;
 }
 
 .techs__item {
@@ -70,4 +73,58 @@
   border-radius: 10px;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 970px) {
+  .techs {
+    padding: 90px 50px;
+  }
+
+  .techs__content {
+    row-gap: 22px;
+  }
+
+  .techs__content-text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .techs__stack {
+    grid-template-columns: repeat(auto-fit, 84px);
+    grid-template-rows: 57px;
+    grid-auto-rows: 57px;
+    row-gap: 10px;
+    padding-top: 61px;
+  }
+
+  .techs__item {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .techs {
+    padding: 70px 18px;
+  }
+
+  .techs__content-title {
+    font-size: 30px;
+    line-height: 1.21;
+  }
+
+  .techs__content-text {
+    grid-template-columns: 292px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .techs__content {
+    grid-template-rows: 36px 32px;
+    row-gap: 24px;
+  }
+
+  .techs__stack {
+    max-width: 200px;
+    padding-top: 26px;
+  }
 }

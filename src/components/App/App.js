@@ -45,7 +45,7 @@ function App() {
             {/* <AboutProject /> */}
             {/* <Techs /> */}
             <AboutMe />
-            {/* <Footer /> */}
+            <Footer />
            </>
         }
       />

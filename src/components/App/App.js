@@ -17,6 +17,7 @@ import { Footer } from '../Footer/Footer';
 
 function App() {
 
+  
   const [loggedIn, setLoggedIn] = React.useState(false);
 
 
@@ -37,15 +38,15 @@ function App() {
       <Routes>
         <Route path="/" element={
            <>
-            {/* <Header
+            <Header
               isLoggedIn={loggedIn}
               handleLogOut={handleLogOut}
-            /> */}
+            />
             {/* <Promo /> */}
             {/* <AboutProject /> */}
             {/* <Techs /> */}
-            <AboutMe />
-            <Footer />
+            {/* <AboutMe /> */}
+            {/* <Footer /> */}
            </>
         }
       />

@@ -11,8 +11,8 @@ function SearchForm() {
         
         <label for="short-films" className="search__label-metrage" name="metrage" value="short-films">
           <input type="checkbox" className="search__checkbox-metrage" id="short-films" />
-          <span class="search__pseudo-item"></span>
-          <span class="search__label-text">Короткометражки</span>
+          <span className="search__pseudo-item"></span>
+          <span className="search__label-text">Короткометражки</span>
         </label>
       </form>
     </section>

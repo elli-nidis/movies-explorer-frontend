@@ -68,6 +68,7 @@
 .search__checkbox-metrage {
   position: absolute;
   top: 50%;
+  left: 50%;
   display: inline-block;
   width: 1px;
   height: 1px;

@@ -18,7 +18,7 @@ function Movies() {
 
   return (
     <>
-    {/* <Header /> */}
+    <Header />
     <section className="movies">
       <SearchForm />
       {

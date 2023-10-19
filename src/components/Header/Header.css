@@ -1,9 +1,15 @@
 .header {
+  position: relative;
   width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 18px 0px;
+  padding: 18px 70px;
+  background-color: #202020;
+}
+
+.header_main-page-color {
   background-color: #073042;
 }
 
@@ -17,4 +23,20 @@
 .header__logo {
   width: 38px;
   height: 38px;
+}
+
+@media screen and (max-width: 1040px) {
+
+  .header {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+
+  .header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 }

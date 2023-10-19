@@ -4,26 +4,26 @@ import { Header } from "../Header/Header";
 import { SearchForm } from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
 import { MoviesCardList } from "../MoviesCardList/MoviesCardList";
+import { MoviesNotFound } from "../MoviesNotFound/MoviesNotFound";
 import { Footer } from "../Footer/Footer";
 
 
-function Movies() {
+function Movies({isOpenedMenu, onOpenMenu, onCloseMenu}) {
 
   const [isLoading, setIsLoading] = React.useState(false);
-
-  function handleSearchButton() {
-    setIsLoading(true);
-  }
-
+  const [successfulSearch, setSuccessfulSearch] = React.useState(true);
 
   return (
     <>
-    <Header />
+    <Header isOpenedMenu={isOpenedMenu} onOpenMenu={onOpenMenu} onCloseMenu={onCloseMenu} />
     <section className="movies">
       <SearchForm />
       {
         isLoading ? (<Preloader />)
-        : (<MoviesCardList/>)
+        : successfulSearch ? (<>
+          <MoviesCardList />
+          </>)
+        : (<MoviesNotFound/>)
       }
     </section>
     <Footer />

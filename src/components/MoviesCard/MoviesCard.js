@@ -36,9 +36,9 @@ function MoviesCard({movie}) {
     </figure>
     {location.pathname === "/movies" && 
       (<button className={ `movies-card__button ${!saved ? "movies-card__button_save" : "movies-card__button_saved"}`}
-        type="button" onClick={handleSaveMovie}></button>)}
+        type="button" onClick={handleSaveMovie} aria-label="сохранить фильм"></button>)}
     {location.pathname === "/saved-movies" &&
-    (<button className="movies-card__button movies-card__button_delete" type="button"></button>)}
+    (<button className="movies-card__button movies-card__button_delete" type="button" aria-label="удалить фильм"></button>)}
     </li>
   );
 }

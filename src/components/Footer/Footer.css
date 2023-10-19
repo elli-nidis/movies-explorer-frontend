@@ -1,7 +1,5 @@
 .footer {
   width: 100%;
-  /* justify-self: self-end; */
-  /* align-self: self-end; */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

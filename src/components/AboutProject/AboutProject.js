@@ -5,7 +5,7 @@ import { SectionCaption } from "../SectionCaption/SectionCaption";
 
 function AboutProject() {
   return (
-    <section className="about-project">
+    <section className="about-project" id="aboutProject" aria-label="О проекте">
       <SectionCaption name="О проекте" />
       <div className="about-project__content">
         <h3 className="about-project__content-title">Дипломный проект включал 5&nbsp;этапов</h3>

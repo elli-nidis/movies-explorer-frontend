@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route  } from 'react-router-dom';
-
 import './App.css';
+import '../Cover/Cover.css';
 import { Header } from '../Header/Header';
 import { Promo } from '../Promo/Promo';
 import { AboutProject } from '../AboutProject/AboutProject';
@@ -19,7 +19,7 @@ function App() {
 
   
   const [loggedIn, setLoggedIn] = React.useState(false);
-
+  const [openedMenu, setOpenedMenu] = React.useState(false);
 
   // function handleLogin(email) {
   //   setLoggedIn(true);
@@ -29,8 +29,16 @@ function App() {
     setLoggedIn(false);
   }
 
+  function openMenu() {
+    setOpenedMenu(true);
+  }
+
+  function closeMenu() {
+    setOpenedMenu(false);
+  }
+
   return (
-    <div className="page">
+    <div className={`page ${openedMenu && "cover"}`}>
       {/* <Header
         isLoggedIn={loggedIn}
         handleLogOut={handleLogOut}
@@ -41,24 +49,25 @@ function App() {
             <Header
               isLoggedIn={loggedIn}
               handleLogOut={handleLogOut}
+              isOpenedMenu={openedMenu}
+              onOpenMenu={openMenu}
+              onCloseMenu={closeMenu}
             />
-            {/* <Promo /> */}
-            {/* <AboutProject /> */}
-            {/* <Techs /> */}
-            {/* <AboutMe /> */}
-            {/* <Footer /> */}
+            <Promo />
+            <AboutProject />
+            <Techs />
+            <AboutMe />
+            <Footer />
            </>
         }
       />
-      <Route path="/movies" element={<Movies />} />
-      <Route path="/saved-movies" element={<SavedMovies />} />
+      <Route path="/movies" element={<Movies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />} />
+      <Route path="/saved-movies" element={<SavedMovies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />} />
       <Route path="/signup" element={<Register />} />
       <Route path="/signin" element={<Login />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/profile" element={<Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />} />
       <Route path="*" element={<PageNotFound />} />
       </Routes>
-      {/* <Footer /> */}
-      {/* <PageNotFound /> */}
       
      
     </div>

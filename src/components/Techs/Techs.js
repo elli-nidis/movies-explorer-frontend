@@ -4,7 +4,7 @@ import { SectionCaption } from "../SectionCaption/SectionCaption";
 
 function Techs() {
   return (
-    <section className="techs">
+    <section className="techs" aria-label="Технологии">
       <SectionCaption name="Технологии" modifier="section-caption__title_dark"/>
       <div className="techs__content">
         <h3 className="techs__content-title">7&nbsp;технологий</h3>

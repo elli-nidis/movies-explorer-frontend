@@ -6,7 +6,7 @@ import photo from '../../images/ekaterina.png';
 
 function AboutMe() {
   return (
-    <section className="about-me">
+    <section className="about-me" aria-label="Обо мне">
       <SectionCaption name="Студент" />
       <div className="about-me__content">
         <h3 className="about-me__title">Екатерина</h3>

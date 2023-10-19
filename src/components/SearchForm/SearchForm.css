@@ -13,7 +13,6 @@
   width: 100%;
   max-width: 1140px;
   display: grid;
-  /* justify-content: center; */
   grid-template-columns: 1fr;
   grid-template-rows: 72px 20px;
   row-gap: 26px;
@@ -36,6 +35,11 @@
   border-radius: 8px;
   margin: 0px;
   padding: 0px 10px 0px 25px;
+}
+
+.search__box:focus{
+  outline: unset;
+  border: 1px solid #ee3465;
 }
 
 .search__button-search {
@@ -68,7 +72,7 @@
 .search__checkbox-metrage {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 1%;
   display: inline-block;
   width: 1px;
   height: 1px;

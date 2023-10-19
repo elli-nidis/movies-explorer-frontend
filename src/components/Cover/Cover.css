@@ -1,0 +1,16 @@
+.cover {
+  width: 100%;
+  position: relative;
+  /* z-index: 5; */
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  background-color: #000;
+  opacity: .3;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}

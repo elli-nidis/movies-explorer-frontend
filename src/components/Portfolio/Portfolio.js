@@ -4,7 +4,7 @@ import arrow from "../../images/arrow.svg"
 
 function Portfolio() {
   return (
-    <section className="portfolio">
+    <section className="portfolio" aria-label="Портфолио">
       <div className="portfolio__content">
         <h3 className="portfolio__title">Портфолио</h3>
         <ul className="portfolio__links">

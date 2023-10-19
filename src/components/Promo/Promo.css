@@ -8,7 +8,6 @@
 }
 
 .promo__content {
-  max-width: 1140px;
   display: grid;
   grid-template-columns: 640px 310px;
   grid-template-rows: 210px 178px 61px;

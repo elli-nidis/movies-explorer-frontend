@@ -3,6 +3,7 @@ import { Routes, Route  } from 'react-router-dom';
 import './App.css';
 import '../Cover/Cover.css';
 import { Header } from '../Header/Header';
+import { Main } from '../Main/Main';
 import { Promo } from '../Promo/Promo';
 import { AboutProject } from '../AboutProject/AboutProject';
 import { Techs } from '../Techs/Techs';
@@ -45,7 +46,7 @@ function App() {
       /> */}
       <Routes>
         <Route path="/" element={
-           <>
+          <>
             <Header
               isLoggedIn={loggedIn}
               handleLogOut={handleLogOut}
@@ -53,20 +54,51 @@ function App() {
               onOpenMenu={openMenu}
               onCloseMenu={closeMenu}
             />
-            <Promo />
-            <AboutProject />
-            <Techs />
-            <AboutMe />
+            <Main
+              children={
+                <>
+                  <Promo />
+                  <AboutProject />
+                  <Techs />
+                  <AboutMe />
+                </>
+              }
+            />
             <Footer />
-           </>
+          </>
         }
       />
-      <Route path="/movies" element={<Movies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />} />
-      <Route path="/saved-movies" element={<SavedMovies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />} />
-      <Route path="/signup" element={<Register />} />
-      <Route path="/signin" element={<Login />} />
-      <Route path="/profile" element={<Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />} />
-      <Route path="*" element={<PageNotFound />} />
+      <Route path="/movies" element={
+        <Main children={
+          <Movies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+        }/>}
+      />
+      <Route path="/saved-movies" element={
+        <Main children={
+          <SavedMovies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+        }/>}
+      />
+      <Route path="/signup" element={
+        <Main
+          children={
+            <Register />
+          }/>}
+      />
+      <Route path="/signin" element={
+        <Main children={
+          <Login />
+        }/>}
+      />
+      <Route path="/profile" element={
+        <Main children={
+          <Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+        }/>}
+      />
+      <Route path="*" element={
+        <Main children={
+          <PageNotFound />
+        }/>}
+      />
       </Routes>
       
      

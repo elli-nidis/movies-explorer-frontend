@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route  } from 'react-router-dom';
 import './App.css';
 import '../Cover/Cover.css';
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Header } from '../Header/Header';
 import { Main } from '../Main/Main';
 import { Promo } from '../Promo/Promo';
@@ -21,6 +22,7 @@ function App() {
   
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [openedMenu, setOpenedMenu] = React.useState(false);
+  const [currentUser, setCurrentUser ] = React.useState({});
 
   // function handleLogin(email) {
   //   setLoggedIn(true);
@@ -39,70 +41,72 @@ function App() {
   }
 
   return (
-    <div className={`page ${openedMenu && "cover"}`}>
-      {/* <Header
-        isLoggedIn={loggedIn}
-        handleLogOut={handleLogOut}
-      /> */}
-      <Routes>
-        <Route path="/" element={
-          <>
-            <Header
-              isLoggedIn={loggedIn}
-              handleLogOut={handleLogOut}
-              isOpenedMenu={openedMenu}
-              onOpenMenu={openMenu}
-              onCloseMenu={closeMenu}
-            />
-            <Main
-              children={
-                <>
-                  <Promo />
-                  <AboutProject />
-                  <Techs />
-                  <AboutMe />
-                </>
-              }
-            />
-            <Footer />
-          </>
-        }
-      />
-      <Route path="/movies" element={
-        <Main children={
-          <Movies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
-        }/>}
-      />
-      <Route path="/saved-movies" element={
-        <Main children={
-          <SavedMovies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
-        }/>}
-      />
-      <Route path="/signup" element={
-        <Main
-          children={
-            <Register />
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className={`page ${openedMenu && "cover"}`}>
+        {/* <Header
+          isLoggedIn={loggedIn}
+          handleLogOut={handleLogOut}
+        /> */}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Header
+                isLoggedIn={loggedIn}
+                handleLogOut={handleLogOut}
+                isOpenedMenu={openedMenu}
+                onOpenMenu={openMenu}
+                onCloseMenu={closeMenu}
+              />
+              <Main
+                children={
+                  <>
+                    <Promo />
+                    <AboutProject />
+                    <Techs />
+                    <AboutMe />
+                  </>
+                }
+              />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/movies" element={
+          <Main children={
+            <Movies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
           }/>}
-      />
-      <Route path="/signin" element={
-        <Main children={
-          <Login />
-        }/>}
-      />
-      <Route path="/profile" element={
-        <Main children={
-          <Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
-        }/>}
-      />
-      <Route path="*" element={
-        <Main children={
-          <PageNotFound />
-        }/>}
-      />
-      </Routes>
+        />
+        <Route path="/saved-movies" element={
+          <Main children={
+            <SavedMovies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+          }/>}
+        />
+        <Route path="/signup" element={
+          <Main
+            children={
+              <Register />
+            }/>}
+        />
+        <Route path="/signin" element={
+          <Main children={
+            <Login />
+          }/>}
+        />
+        <Route path="/profile" element={
+          <Main children={
+            <Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+          }/>}
+        />
+        <Route path="*" element={
+          <Main children={
+            <PageNotFound />
+          }/>}
+        />
+        </Routes>
+        
       
-     
-    </div>
+      </div>
+    </ CurrentUserContext.Provider>
   );
 }
 

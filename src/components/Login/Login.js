@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useLocation } from "react-router-dom";
 import './Login.css';
+import { PageWithForm } from "../PageWithForm/PageWithForm";
 import { Form } from '../Form/Form';
 import { FormWrapper } from '../FormWrapper/FormWrapper';
 import { TitlePageWithForm } from '../TitlePageWithForm/TitlePageWithForm';
@@ -29,7 +30,7 @@ function Login() {
   };
 
   return (
-    <section className="login" aria-label="раздел входа в аккаунт">
+    <PageWithForm clName={locationString} ariaLabel="раздел входа в аккаунт">
       <FormWrapper>
         <>
           <Logo />
@@ -37,14 +38,9 @@ function Login() {
           <Form 
             name = {`form-${locationString}`}
             clName = {locationString}
-            textButton = {"Зарегистрироваться"}
+            textButton = {"Войти"}
           >
             <>
-              <label htmlFor="input-name" className="form__label">
-                Имя
-                <input className="form__input" id="input-name" type="text" name="name" value={formValue.name} onChange={handleChange} required />
-                <span className="form__error">{err.message || ""}</span>
-              </label>
               <label htmlFor="input-email" className="form__label">
                 E-mail
                 <input className="form__input" id="input-email" type="email" name="email" value={formValue.email} onChange={handleChange} required />
@@ -60,7 +56,7 @@ function Login() {
         </>
       </FormWrapper>
       <AlternativeAction/>
-    </section>
+    </PageWithForm>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useLocation } from "react-router-dom";
 import './Register.css';
+import { PageWithForm } from "../PageWithForm/PageWithForm";
 import { Form } from '../Form/Form';
 import { FormWrapper } from '../FormWrapper/FormWrapper';
 import { TitlePageWithForm } from '../TitlePageWithForm/TitlePageWithForm';
@@ -29,12 +30,13 @@ function Register() {
   };
 
   return (
-    <section className="register" aria-label="раздел регистрации">
+    // <section className="register" aria-label="раздел регистрации">
+    <PageWithForm clName={locationString} ariaLabel="раздел регистрации">
       <FormWrapper>
         <>
           <Logo />
           {/* <h2 className="register__title">Добро пожаловать!</h2> */}
-          <TitlePageWithForm title={"Добро пожаловать!"}/>
+          <TitlePageWithForm title="Добро пожаловать!"/>
           <Form 
             name = {`form-${locationString}`}
             clName = {locationString}
@@ -61,7 +63,8 @@ function Register() {
         </>
       </FormWrapper>
       <AlternativeAction/>
-    </section>
+    {/* </section> */}
+    </PageWithForm>
   );
 }
 

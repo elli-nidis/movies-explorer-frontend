@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import './Register.css';
 import { Form } from '../Form/Form';
 import { FormWrapper } from '../FormWrapper/FormWrapper';
+import { TitlePageWithForm } from '../TitlePageWithForm/TitlePageWithForm';
 import { AlternativeAction } from '../AlternativeAction/AlternativeAction';
 import { Logo } from '../Logo/Logo';
 
@@ -32,7 +33,8 @@ function Register() {
       <FormWrapper>
         <>
           <Logo />
-          <h2 className="register__title">Добро пожаловать!</h2>
+          {/* <h2 className="register__title">Добро пожаловать!</h2> */}
+          <TitlePageWithForm title={"Добро пожаловать!"}/>
           <Form 
             name = {`form-${locationString}`}
             clName = {locationString}

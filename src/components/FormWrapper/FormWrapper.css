@@ -1,0 +1,21 @@
+.form-wrapper {
+  width: 100%;
+  max-width: 396px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+  padding: 0px;
+  margin: 0px;
+}
+
+@media screen and (max-width: 520px) {
+  .form-wrapper {
+    max-width: 260px;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: center;
+  }
+}

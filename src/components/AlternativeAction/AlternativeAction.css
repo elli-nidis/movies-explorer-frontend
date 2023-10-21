@@ -19,6 +19,10 @@
   margin: 0px;
 }
 
+.alternative-action__link:hover {
+  opacity: .7;
+}
+
 .alternative-action__link_pink {
   font-size: 13px;
   font-weight: 500;

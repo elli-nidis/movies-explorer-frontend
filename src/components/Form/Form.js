@@ -1,13 +1,26 @@
 import React from "react";
-// import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import './Form.css';
 
-function Form({children}) {
+function Form({name, clName, textButton, ...props}) {
+
+  const location = useLocation();
+  const err = {message: ""};
 
   return (
-   <form className="form">
-    {children}
-    <button></button>
+   <form name={name} className={`form form__${clName}`} autoComplete="false" noValidate>
+    <div className="form__labels-wrapper">
+      {props.children}
+    </div>
+    <div className="form__button-wrapper">
+      <p className="form__error-message">{err.message}</p>
+      <button
+        className={`form__button ${location.pathname === "/profile" && "form__button_link-style"}`}
+        aria-label={`кнопка ${textButton}`}
+        type="submit">
+        {textButton}
+      </button>
+    </div>
    </form>
   );
 }

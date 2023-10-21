@@ -7,7 +7,7 @@ function Navigation({isOpenedMenu, onOpenMenu, onCloseMenu}) {
   const location = useLocation();
 
   
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   
 

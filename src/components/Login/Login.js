@@ -42,12 +42,12 @@ function Login() {
             <>
               <label htmlFor="input-email" className="form__label">
                 E-mail
-                <input className="form__input" id="input-email" type="email" name="email" value={formValue.email} onChange={handleChange} required />
+                <input className="form__input" id="input-email" type="email" name="email" value={formValue.email} onChange={handleChange} maxLength="30" placeholder="Введите e-mail" required />
                 <span className="form__error">{err.message || ""}</span>
               </label>
               <label htmlFor="input-password" className="form__label">
                 Пароль
-                <input className={`form__input ${err.message && "form__input_error"}`} id="input-password" type="password" name="password" value={formValue.password} onChange={handleChange} required />
+                <input className={`form__input ${err.message && "form__input_error"}`} id="input-password" type="password" name="password" value={formValue.password} onChange={handleChange} placeholder="Введите пароль" minLength="8" maxLength="30" required />
                 <span className="form__error">{err.message || ""}</span>
               </label>
             </>

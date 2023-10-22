@@ -15,7 +15,6 @@ function Login() {
   const err = {message: ""};
 
   const [formValue, setFormValue] = useState({
-    name: "",
     email: "",
     password: ""
   });

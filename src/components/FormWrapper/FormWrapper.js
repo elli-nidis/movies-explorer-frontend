@@ -1,13 +1,13 @@
 import React from "react";
-// import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import './FormWrapper.css';
 
 function FormWrapper({...props}) {
 
-  // const location = useLocation();
+  const location = useLocation();
 
   return (
-   <div className="form-wrapper">
+   <div className={`form-wrapper ${location.pathname === "/profile" && "form-wrapper__profile"}`}>
     {props.children}
    </div>
   );

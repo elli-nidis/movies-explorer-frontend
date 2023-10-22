@@ -30,12 +30,10 @@ function Register() {
   };
 
   return (
-    // <section className="register" aria-label="раздел регистрации">
     <PageWithForm clName={locationString} ariaLabel="раздел регистрации">
       <FormWrapper>
         <>
           <Logo />
-          {/* <h2 className="register__title">Добро пожаловать!</h2> */}
           <TitlePageWithForm title="Добро пожаловать!"/>
           <Form 
             name = {`form-${locationString}`}
@@ -63,7 +61,6 @@ function Register() {
         </>
       </FormWrapper>
       <AlternativeAction/>
-    {/* </section> */}
     </PageWithForm>
   );
 }

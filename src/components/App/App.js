@@ -93,9 +93,13 @@ function App() {
           }/>}
         />
         <Route path="/profile" element={
-          <Main children={
-            <Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
-          }/>}
+          <>
+            <Header/>
+            <Main children={
+              <Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+            }/>
+          </>
+        }
         />
         <Route path="*" element={
           <Main children={

@@ -8,8 +8,8 @@ function Form({name, clName, textButton, ...props}) {
   const err = {message: ""};
 
   return (
-   <form name={name} className={`form form__${clName}`} autoComplete="false" noValidate>
-    <div className="form__labels-wrapper">
+   <form name={name} className={`form form__${clName}`} autoComplete="off" noValidate>
+    <div className={`form__labels-wrapper ${location.pathname === "/profile" && "form__labels-wrapper_two-side-style"}`}>
       {props.children}
     </div>
     <div className="form__button-wrapper">

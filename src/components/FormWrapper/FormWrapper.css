@@ -8,6 +8,16 @@
   margin: 0px;
 }
 
+.form-wrapper__profile {
+ row-gap: 123px;
+}
+
+@media screen and (max-width: 850px) {
+  .form-wrapper__profile {
+    row-gap: 96px;
+   }
+}
+
 @media screen and (max-width: 520px) {
   .form-wrapper {
     max-width: 260px;
@@ -18,4 +28,8 @@
     justify-items: start;
     align-items: center;
   }
+
+  .form-wrapper__profile {
+    row-gap: 80px;
+   }
 }

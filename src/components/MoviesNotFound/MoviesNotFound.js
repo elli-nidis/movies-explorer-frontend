@@ -1,7 +1,6 @@
 import React from "react";
 import "./MoviesNotFound.css";
 
-
 function MoviesNotFound() {
   return (
     <section className="movies-not-found" aria-label="Фильмы не найдены">

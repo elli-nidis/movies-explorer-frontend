@@ -5,7 +5,6 @@ import globe from '../../images/promo-logo.svg';
 
 function Promo() {
 
-
   return (
     <section className="promo" aria-label="Промо">
       <div className="promo__content">
@@ -22,7 +21,6 @@ function Promo() {
             Узнать больше
           </button>
         </a>
-        
       </div>
     </section>
   );

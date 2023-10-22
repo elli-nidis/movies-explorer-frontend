@@ -20,13 +20,9 @@ import { Footer } from '../Footer/Footer';
 function App() {
 
   
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const [openedMenu, setOpenedMenu] = React.useState(false);
   const [currentUser, setCurrentUser ] = React.useState({});
-
-  // function handleLogin(email) {
-  //   setLoggedIn(true);
-  // }
 
   function handleLogOut() {
     setLoggedIn(false);
@@ -43,10 +39,6 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className={`page ${openedMenu && "cover"}`}>
-        {/* <Header
-          isLoggedIn={loggedIn}
-          handleLogOut={handleLogOut}
-        /> */}
         <Routes>
           <Route path="/" element={
             <>
@@ -94,7 +86,13 @@ function App() {
         />
         <Route path="/profile" element={
           <>
-            <Header/>
+            <Header
+                isLoggedIn={loggedIn}
+                handleLogOut={handleLogOut}
+                isOpenedMenu={openedMenu}
+                onOpenMenu={openMenu}
+                onCloseMenu={closeMenu}
+              />
             <Main children={
               <Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
             }/>

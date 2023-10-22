@@ -1,19 +1,15 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import { useLocation } from "react-router-dom";
 import './Profile.css';
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Header } from "../Header/Header";
 import { PageWithForm } from "../PageWithForm/PageWithForm";
 import { Form } from '../Form/Form';
 import { FormWrapper } from '../FormWrapper/FormWrapper';
 import { TitlePageWithForm } from '../TitlePageWithForm/TitlePageWithForm';
 import { AlternativeAction } from '../AlternativeAction/AlternativeAction';
-import { Logo } from '../Logo/Logo';
 
 
-function Profile({isOpenedMenu, onOpenMenu, onCloseMenu}) {
+function Profile() {
 
-  // const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
   const locationString = (location.pathname).match(/\w/gi).join("");
   const err = {message: ""};

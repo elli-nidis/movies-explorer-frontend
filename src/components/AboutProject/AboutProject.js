@@ -24,7 +24,6 @@ function AboutProject() {
           <div className="about-project__label">Back-end</div>
           <div className="about-project__label">Front-end</div>
         </div>
-
       </div>
     </section>
   );

@@ -6,9 +6,9 @@ import logo from '../../images/logo.svg';
 function Logo() {
   
   return (
-        <Link to="/">
-          <img src={logo} alt="логотип" className="logo" />
-        </Link>
+    <Link to="/">
+      <img src={logo} alt="логотип" className="logo" />
+    </Link>
   );
 }
 

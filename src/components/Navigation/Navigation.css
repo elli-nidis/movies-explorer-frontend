@@ -97,13 +97,11 @@
 
 .menu__button {
   position: absolute;
-  /* position: sticky; */
   border: none;
   background-color: transparent;
   cursor: pointer;
   margin: 0px;
   padding: 0px;
-  /* z-index: 100; */
 }
 
 .menu__button_open {
@@ -121,7 +119,6 @@
   right: 23px;
   background-image: url(../../images/icon-close-menu.svg);
   background-position: center;
-  transform: rotate(45);
 }
 
 .menu__button:hover {
@@ -148,7 +145,6 @@
 
 @media screen and (max-width: 850px) {
   .navigation_logged {
-    /* width: 520px; */
     width: 67.7vw;
     height: 100vh;
     box-sizing: border-box;
@@ -157,7 +153,6 @@
     right: 0;
     justify-content: center;
     background-color: #202020;
-    /* border: 1px solid salmon; */
     padding-top: 159px;
     padding-bottom: 92px;
     visibility: hidden;
@@ -184,7 +179,6 @@
 
   .menu__pages {
     grid-template-columns: 1fr;
-    /* align-items: center; */
     column-gap: unset;
     row-gap: 28px;
   }
@@ -211,7 +205,6 @@
   }
 
   .menu_unlogged {
-    /* justify-self: end; */
     gap: 14px;
   }
   .menu__link_unlogged {
@@ -224,5 +217,5 @@
     height: 26px;
     font-size: 10px;
     line-height: 1.6;
-}
+  }
 }

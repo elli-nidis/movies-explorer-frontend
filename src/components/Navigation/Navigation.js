@@ -2,16 +2,13 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import './Navigation.css';
 import icon from '../../images/icon-account.svg';
-function Navigation({isOpenedMenu, onOpenMenu, onCloseMenu}) {
+
+
+function Navigation({isLoggedIn, isOpenedMenu, onOpenMenu, onCloseMenu}) {
 
   const location = useLocation();
 
-  
-  const [loggedIn, setLoggedIn] = React.useState(false);
-
-  
-
-  return (loggedIn ?
+  return (isLoggedIn ?
     (
       <nav className={`navigation navigation_logged  ${isOpenedMenu && "visible fixed"}`}>
         <ul className="menu menu_logged">
@@ -55,7 +52,6 @@ function Navigation({isOpenedMenu, onOpenMenu, onCloseMenu}) {
               </NavLink>
             </li>
           </ul> 
-        
       </nav>
     ));
 }

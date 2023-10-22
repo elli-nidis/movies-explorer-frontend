@@ -54,6 +54,10 @@
   padding: 0;
 }
 
+.footer__link:hover {
+  opacity: .7;
+}
+
 @media screen and (max-width: 1040px) {
 
   .footer {

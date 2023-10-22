@@ -45,7 +45,7 @@
   font-size: 30px;
   font-weight: 400;
   line-height: 1.66;
-  letter-spacing: -4%;
+  letter-spacing: -.8px;
   color: #fff;
   margin: 0;
 }
@@ -57,10 +57,8 @@
   padding: 0;
 }
 
-.portfolio__img {
-  
-  /* width: 29px;
-  height: 60px; */
+.portfolio__img:hover {
+  opacity: .8;
 }
 
 @media screen and (max-width: 1040px) {

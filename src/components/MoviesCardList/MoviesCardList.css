@@ -7,7 +7,6 @@
 .movies-grid {
   width: 100%;
   display: grid;
-  /* grid-template-columns: repeat(3, 360px); */
   grid-template-columns: repeat(auto-fit, minmax(342px, 360px));
   grid-template-rows: 319px;
   grid-auto-rows: 319px;

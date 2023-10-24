@@ -10,7 +10,7 @@ function Navigation({isLoggedIn, isOpenedMenu, onOpenMenu, onCloseMenu}) {
 
   return (isLoggedIn ?
     (
-      <nav className={`navigation navigation_logged  ${isOpenedMenu && "visible fixed"}`}>
+      <nav className={`navigation navigation_logged  ${isOpenedMenu ? "visible fixed" : ""}`}>
         <ul className="menu menu_logged">
           <div className="menu__pages">
             {isOpenedMenu && (
@@ -27,17 +27,17 @@ function Navigation({isLoggedIn, isOpenedMenu, onOpenMenu, onCloseMenu}) {
           </div>
           <div className="menu__account">
             <li className="menu__item">
-              <NavLink to="/profile" className={({isActive}) => `menu__link menu__link_logged account__grid ${(isActive && isOpenedMenu) ? "menu__link_active-opened-menu" : (isActive && !isOpenedMenu) ? "menu__link_active-closed-menu" : ""}`} onClick={onCloseMenu}>
+              <NavLink to="/profile" className={({isActive}) => `menu__link menu__link_logged account ${(isActive && isOpenedMenu) ? "menu__link_active-opened-menu" : (isActive && !isOpenedMenu) ? "menu__link_active-closed-menu" : ""}`} onClick={onCloseMenu}>
                 Аккаунт
-                <div className={`menu__icon-wrapper ${location.pathname === "/" && "menu__icon-wrapper_main-page-color"}`}>
+                <div className={`menu__icon-wrapper ${location.pathname === "/" ? "menu__icon-wrapper_main-page-color" : ""}`}>
                   <img src={icon} alt="иконка человек" className="menu__icon" />
                 </div>
               </NavLink>
             </li>
           </div> 
       </ul> 
-      <button className={`menu__button menu__button_open ${isOpenedMenu && "out"} hidden`} type="button" onClick={onOpenMenu}></button>
-      <button className={`menu__button menu__button_close hidden ${isOpenedMenu && "visible"}`} type="button" onClick={onCloseMenu}></button>
+      <button className={`navigation__button navigation__button_open ${isOpenedMenu ? "out" : ""} hidden`} type="button" onClick={onOpenMenu}></button>
+      <button className={`navigation__button navigation__button_close hidden ${isOpenedMenu ? "visible" : ""}`} type="button" onClick={onCloseMenu}></button>
       </nav>
     )
     : (

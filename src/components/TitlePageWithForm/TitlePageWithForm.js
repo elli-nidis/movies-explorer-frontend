@@ -8,7 +8,7 @@ function TitlePageWithForm({title}) {
   const location = useLocation();
 
   return (
-    <h2 className={`title ${location.pathname === "/profile" && "title_center"}`}>{title}</h2>
+    <h1 className={`title ${location.pathname === "/profile" ? "title_center" : ""}`}>{title}</h1>
   );
 }
 

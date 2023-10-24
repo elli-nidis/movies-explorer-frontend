@@ -9,20 +9,23 @@ function Portfolio() {
         <h3 className="portfolio__title">Портфолио</h3>
         <ul className="portfolio__links">
           <li className="portfolio__item">
-            <p className="portfolio__text">Статичный сайт</p>
+            {/* <p className="portfolio__text">Статичный сайт</p> */}
             <a href="https://github.com/elli-nidis/russian-travel.git" className="portfolio__link" target="_blank" rel="noopener noreferrer">
+              <p className="portfolio__text">Статичный сайт</p>
               <img src={arrow} alt="стрелка" className="portfolio__img" />
             </a>
           </li>
           <li className="portfolio__item">
-            <p className="portfolio__text">Адаптивный сайт</p>
+            {/* <p className="portfolio__text">Адаптивный сайт</p> */}
             <a href="https://github.com/elli-nidis/react-mesto-auth.git" className="portfolio__link" target="_blank" rel="noopener noreferrer">
+              <p className="portfolio__text">Адаптивный сайт</p>
               <img src={arrow} alt="стрелка" className="portfolio__img" />
             </a>
           </li>
           <li className="portfolio__item">
-            <p className="portfolio__text">Одностраничное приложение</p>
+            {/* <p className="portfolio__text">Одностраничное приложение</p> */}
             <a href="https://github.com/elli-nidis/react-mesto-api-full-gha.git" className="portfolio__link" target="_blank" rel="noopener noreferrer">
+              <p className="portfolio__text">Одностраничное приложение</p>
               <img src={arrow} alt="стрелка" className="portfolio__img" />
             </a>
           </li>

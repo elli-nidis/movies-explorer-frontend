@@ -33,7 +33,7 @@ function Profile() {
     <PageWithForm clName={locationString} ariaLabel="раздел профиля">
       <FormWrapper>
         <>
-          <TitlePageWithForm title={`Привет, ${"Пользователь123"}!`}/>
+          <TitlePageWithForm title={`Привет, ${"Виталий"}!`}/>
           <Form 
             name = {`form-${locationString}`}
             clName = {locationString}

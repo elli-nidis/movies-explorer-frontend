@@ -8,14 +8,14 @@ function Form({name, clName, textButton, ...props}) {
   const err = {message: ""};
 
   return (
-   <form name={name} className={`form form__${clName}`} autoComplete="off" noValidate>
-    <div className={`form__labels-wrapper ${location.pathname === "/profile" && "form__labels-wrapper_two-side-style"}`}>
+   <form name={name} className={`form form_${clName}`} autoComplete="off" noValidate>
+    <div className={`form__labels-wrapper ${location.pathname === "/profile" ? "form__labels-wrapper_two-side-style" : ""}`}>
       {props.children}
     </div>
     <div className="form__button-wrapper">
       <p className="form__error-message">{err.message}</p>
       <button
-        className={`form__button ${location.pathname === "/profile" && "form__button_link-style"}`}
+        className={`form__button ${location.pathname === "/profile" ? "form__button_link-style" : ""}`}
         aria-label={`кнопка ${textButton}`}
         type="submit">
         {textButton}

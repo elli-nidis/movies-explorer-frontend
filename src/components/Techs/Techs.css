@@ -24,7 +24,7 @@
   font-size: 50px;
   font-weight: 400;
   line-height: 1.16;
-  letter-spacing: -.8px;
+  letter-spacing: -2px;
   color: #fff;
   margin: 0;
   padding: 0;
@@ -77,16 +77,22 @@
 
 @media screen and (max-width: 970px) {
   .techs {
-    padding: 90px 50px;
+    padding: 93px 50px 90px;
   }
 
   .techs__content {
     row-gap: 22px;
+    padding-top: 80px;
+  }
+
+  .techs__content-title {
+    letter-spacing: -2px;
   }
 
   .techs__content-text {
     font-size: 12px;
     line-height: 1.5;
+    letter-spacing: -.48px;
   }
 
   .techs__stack {
@@ -94,7 +100,7 @@
     grid-template-rows: 57px;
     grid-auto-rows: 57px;
     row-gap: 10px;
-    padding-top: 61px;
+    padding-top: 57px;
   }
 
   .techs__item {
@@ -104,12 +110,13 @@
 
 @media screen and (max-width: 610px) {
   .techs {
-    padding: 70px 18px;
+    padding: 64px 14px;
   }
 
   .techs__content-title {
     font-size: 30px;
     line-height: 1.21;
+    letter-spacing: -1.2px;
   }
 
   .techs__content-text {
@@ -121,6 +128,7 @@
   .techs__content {
     grid-template-rows: 36px 32px;
     row-gap: 24px;
+    padding-top: 60px;
   }
 
   .techs__stack {

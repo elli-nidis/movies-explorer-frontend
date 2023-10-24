@@ -18,7 +18,7 @@ function AlternativeAction() {
       location.pathname === "/profile" ? "/"
       : location.pathname === "/signup" ? "/signin"
       : "/signup"} 
-      className={`alternative-action__link ${location.pathname === "/profile" && "alternative-action__link_pink"}`}>
+      className={`alternative-action__link ${location.pathname === "/profile" ? "alternative-action__link_pink" : ""}`}>
       {textLink}
     </Link>
    </p>

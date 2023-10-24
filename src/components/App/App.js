@@ -38,7 +38,7 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className={`page ${openedMenu && "cover"}`}>
+      <div className={`page ${openedMenu ? "cover" : ""}`}>
         <Routes>
           <Route path="/" element={
             <>
@@ -64,15 +64,33 @@ function App() {
           }
         />
         <Route path="/movies" element={
-          <Main children={
-            <Movies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
-          }/>}
-        />
+          <>
+            <Header
+                isLoggedIn={loggedIn}
+                handleLogOut={handleLogOut}
+                isOpenedMenu={openedMenu}
+                onOpenMenu={openMenu}
+                onCloseMenu={closeMenu}
+              />
+            <Main children={
+              <Movies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+            }/>
+          </>
+          }/>
         <Route path="/saved-movies" element={
-          <Main children={
-            <SavedMovies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
-          }/>}
-        />
+          <>
+            <Header
+                isLoggedIn={loggedIn}
+                handleLogOut={handleLogOut}
+                isOpenedMenu={openedMenu}
+                onOpenMenu={openMenu}
+                onCloseMenu={closeMenu}
+              />
+              <Main children={
+                <SavedMovies isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+                }/>
+          </>
+        }/>
         <Route path="/signup" element={
           <Main
             children={

@@ -19,10 +19,10 @@ function AboutProject() {
           нужно было соблюдать, чтобы успешно защититься.
         </p>
         <div className="about-project__timeline">
-          <div className="about-project__inscription">1&nbsp;неделя</div>
-          <div className="about-project__inscription">4&nbsp;недели</div>
-          <div className="about-project__label">Back-end</div>
-          <div className="about-project__label">Front-end</div>
+          <p className="about-project__inscription">1&nbsp;неделя</p>
+          <p className="about-project__inscription">4&nbsp;недели</p>
+          <p className="about-project__label">Back-end</p>
+          <p className="about-project__label">Front-end</p>
         </div>
       </div>
     </section>

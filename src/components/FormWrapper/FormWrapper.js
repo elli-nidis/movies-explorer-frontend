@@ -7,7 +7,7 @@ function FormWrapper({...props}) {
   const location = useLocation();
 
   return (
-   <div className={`form-wrapper ${location.pathname === "/profile" && "form-wrapper__profile"}`}>
+   <div className={`form-wrapper ${location.pathname === "/profile" ? "form-wrapper_profile" : ""}`}>
     {props.children}
    </div>
   );

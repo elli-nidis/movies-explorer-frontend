@@ -14,7 +14,7 @@
   display: grid;
   justify-content: center;
   grid-template-columns: 600px minmax(30px, 270px) 270px;
-  grid-template-rows: 58px 38px 106px 116px;
+  grid-template-rows: 58px 38px 115px 116px;
   padding-top: 66px;
 }
 
@@ -87,7 +87,7 @@
 
   .about-me__content {
     grid-template-columns: 364px minmax(25px, 321px) 255px;
-    grid-template-rows: 40px 34px 128px 104px;
+    grid-template-rows: 40px 34px 108px 124px;
   }
 
   .about-me__title {
@@ -114,12 +114,12 @@
 @media screen and (max-width: 744px) {
 
   .about-me {
-    padding: 70px 14px;
+    padding: 76px 14px;
   }
 
   .about-me__content {
     grid-template-columns: 292px;
-    grid-template-rows: 352px 76px 36px 132px 57px;
+    grid-template-rows: 352px 76px 36px 122px 67px;
     padding-top: 60px;
   }
 

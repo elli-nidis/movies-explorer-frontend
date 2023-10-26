@@ -1,0 +1,37 @@
+.form-wrapper {
+  width: 100%;
+  max-width: 396px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 37px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.form-wrapper_profile {
+ row-gap: 123px;
+}
+
+@media screen and (max-width: 850px) {
+  .form-wrapper_profile {
+    row-gap: 96px;
+   }
+}
+
+@media screen and (max-width: 520px) {
+  .form-wrapper {
+    max-width: 260px;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: center;
+    row-gap: 48px;
+
+  }
+
+  .form-wrapper_profile {
+    row-gap: 53px;
+   }
+}

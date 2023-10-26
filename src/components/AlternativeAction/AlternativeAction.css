@@ -1,0 +1,44 @@
+.alternative-action {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  color: #8b8b8b;
+  padding: 0px;
+  margin: 0px;
+}
+
+.alternative-action__link {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  color: #4285f4;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.alternative-action__link:hover {
+  opacity: .7;
+}
+
+.alternative-action__link_pink {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ee3465;
+}
+
+@media screen and (max-width: 610px) {
+  .alternative-action {
+    font-size: 12px;
+  }
+
+  .alternative-action__link {
+    font-size: 12px;
+  }
+
+  .alternative-action__link_pink {
+    font-size: 12px;
+  }
+}

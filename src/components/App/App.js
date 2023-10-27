@@ -20,7 +20,7 @@ import { Footer } from '../Footer/Footer';
 function App() {
 
   
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const [openedMenu, setOpenedMenu] = React.useState(false);
   const [currentUser, setCurrentUser ] = React.useState({});
 

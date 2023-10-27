@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import './Register.css';
 import { PageWithForm } from "../PageWithForm/PageWithForm";
 import { Form } from '../Form/Form';
@@ -9,9 +9,13 @@ import { AlternativeAction } from '../AlternativeAction/AlternativeAction';
 import { Logo } from '../Logo/Logo';
 
 
-function Register() {
+function Register({onRegister}) {
+
   const location = useLocation();
   const locationString = (location.pathname).match(/\w/gi).join("");
+
+  const navigate = useNavigate();
+  
   const err = {message: ""};
 
   const [formValue, setFormValue] = useState({
@@ -27,6 +31,19 @@ function Register() {
       ...formValue,
       [name]: value
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const {email, password} = formValue;
+    auth.register(email, password)
+      .then(res => {
+        if(res) {
+          onRegister({imgLink: 'success', text: 'Вы успешно зарегистрировались!', name: 'Успешная регистрация'});
+          navigate('/sign-in', {replace: true});
+        }
+        else onRegister({imgLink: 'failure', text: 'Что-то пошло не так! Попробуйте ещё раз.', name: 'Неудачная регистрация'});
+      });  
   };
 
   return (

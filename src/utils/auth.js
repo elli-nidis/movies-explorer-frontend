@@ -1,5 +1,5 @@
-// export const BASE_URL = 'http://localhost:4000/';
-export const BASE_URL = 'https://api.mov.nomoredomainsicu.ru/';
+export const BASE_URL = 'http://localhost:4000/';
+// export const BASE_URL = 'https://api.mov.nomoredomainsicu.ru/';
 
 export const register = (name, email, password) => {
   return fetch(`${BASE_URL}signup`, {
@@ -8,7 +8,7 @@ export const register = (name, email, password) => {
       "Accept": "application/json",
       "Content-Type": "application/json"
     },
-    // credentials: 'include',
+    credentials: 'include',
     body: JSON.stringify({name, email, password})
   })
   .then (response => {
@@ -49,7 +49,7 @@ export const authorize = (email, password) => {
 }
 
 export const getCurrentUser = () => {
-  return fetch(`${BASE_URL}me`, {
+  return fetch(`${BASE_URL}users/me`, {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",

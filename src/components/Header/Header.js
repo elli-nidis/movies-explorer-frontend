@@ -12,7 +12,7 @@ function Header({isLoggedIn, handleLogOut, isOpenedMenu, onOpenMenu, onCloseMenu
     <header className={`header ${location.pathname === "/" ? "header_main-page-color" : ""}  ${isOpenedMenu ? "cover" : ""}`}>
       <div className="header__content">
         <Logo />
-        {<Navigation isLoggedIn={isLoggedIn} handleLogOut={handleLogOut} isOpenedMenu={isOpenedMenu} onOpenMenu={onOpenMenu} onCloseMenu={onCloseMenu} />}
+        {<Navigation isLoggedIn={isLoggedIn} isOpenedMenu={isOpenedMenu} onOpenMenu={onOpenMenu} onCloseMenu={onCloseMenu} />}
       </div>
     </header>
   );

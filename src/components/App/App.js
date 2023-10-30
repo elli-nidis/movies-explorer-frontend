@@ -16,13 +16,23 @@ import { Login } from '../Login/Login';
 import { Profile } from '../Profile/Profile';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
 import { Footer } from '../Footer/Footer';
+import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
+import * as auth from '../../utils/auth';
 
 function App() {
 
   
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [openedMenu, setOpenedMenu] = React.useState(false);
   const [currentUser, setCurrentUser ] = React.useState({});
+
+  const [isInfoTooltipOpen, setInfoTooltipOpen] = React.useState(false);
+  const [infoTooltipParams, setInfoTooltipParams] = React.useState({});
+
+  function handleRegistrationClick({imgLink, text, name}) {
+    setInfoTooltipOpen(true);
+    setInfoTooltipParams({imgLink, text, name});
+  }
 
   function handleLogOut() {
     setLoggedIn(false);
@@ -36,6 +46,20 @@ function App() {
     setOpenedMenu(false);
   }
 
+  function closePopup() {
+    setInfoTooltipOpen(false);
+  }
+
+  function handleLogin(email, password) {
+    auth.authorize(email, password);
+    setLoggedIn(true);
+  }
+
+  function handleLogOut() {
+    setLoggedIn(false);
+    // setCurrentUserEmail('');
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className={`page ${openedMenu ? "cover" : ""}`}>
@@ -44,7 +68,7 @@ function App() {
             <>
               <Header
                 isLoggedIn={loggedIn}
-                handleLogOut={handleLogOut}
+                // handleLogOut={handleLogOut}
                 isOpenedMenu={openedMenu}
                 onOpenMenu={openMenu}
                 onCloseMenu={closeMenu}
@@ -67,7 +91,7 @@ function App() {
           <>
             <Header
                 isLoggedIn={loggedIn}
-                handleLogOut={handleLogOut}
+                // handleLogOut={handleLogOut}
                 isOpenedMenu={openedMenu}
                 onOpenMenu={openMenu}
                 onCloseMenu={closeMenu}
@@ -81,7 +105,7 @@ function App() {
           <>
             <Header
                 isLoggedIn={loggedIn}
-                handleLogOut={handleLogOut}
+                // handleLogOut={handleLogOut}
                 isOpenedMenu={openedMenu}
                 onOpenMenu={openMenu}
                 onCloseMenu={closeMenu}
@@ -94,7 +118,7 @@ function App() {
         <Route path="/signup" element={
           <Main
             children={
-              <Register />
+              <Register onRegister={handleRegistrationClick} handleLogin={handleLogin}/>
             }/>}
         />
         <Route path="/signin" element={
@@ -106,13 +130,13 @@ function App() {
           <>
             <Header
                 isLoggedIn={loggedIn}
-                handleLogOut={handleLogOut}
+                // handleLogOut={handleLogOut}
                 isOpenedMenu={openedMenu}
                 onOpenMenu={openMenu}
                 onCloseMenu={closeMenu}
               />
             <Main children={
-              <Profile isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
+              <Profile handleLogOut={handleLogOut} isOpenedMenu={openedMenu} onOpenMenu={openMenu} onCloseMenu={closeMenu} />
             }/>
           </>
         }
@@ -123,9 +147,14 @@ function App() {
           }/>}
         />
         </Routes>
-        
-      
       </div>
+
+      <InfoTooltip
+        infoTooltipParams={infoTooltipParams}
+        isOpen={isInfoTooltipOpen}
+        onClose={closePopup}
+      />
+      
     </ CurrentUserContext.Provider>
   );
 }

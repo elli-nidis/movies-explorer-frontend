@@ -8,10 +8,11 @@ import { TitlePageWithForm } from '../TitlePageWithForm/TitlePageWithForm';
 import { AlternativeAction } from '../AlternativeAction/AlternativeAction';
 
 
-function Profile() {
+function Profile({handleLogOut}) {
 
   const location = useLocation();
   const locationString = (location.pathname).match(/\w/gi).join("");
+
   const err = {message: ""};
 
   const [formValue, setFormValue] = useState({
@@ -54,7 +55,7 @@ function Profile() {
           </Form>       
         </>
       </FormWrapper>
-      <AlternativeAction/>
+      <AlternativeAction handleLogOut={handleLogOut}/>
     </PageWithForm>
     </>
   );

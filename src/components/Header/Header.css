@@ -1,38 +1,142 @@
 .header {
   position: relative;
-  width: 100%;
-  max-width: 1280px;
-  box-sizing: border-box;
+  padding: 0 70px;
+  min-height: 74px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 18px 70px;
-  background-color: #202020;
+  background: #073042;
+  width: 1280px;
 }
 
-.header_main-page-color {
-  background-color: #073042;
-}
-
-.header__content {
-  width: 100%;
-  max-width: 1140px;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 1040px) {
-
+@media screen and (max-width: 1279px) {
   .header {
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 100vw;
   }
 }
 
-@media screen and (max-width: 610px) {
+.header__button-container {
+  margin-left: auto;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
 
+.header__button-container_films {
+  position: absolute;
+  top: 23px;
+  right: 210px;
+}
+
+.header__button {
+  min-height: 32px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.header__button_active {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0a0a0;
+  text-decoration: none;
+}
+
+.header__button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.header__gray {
+  background: #202020;
+}
+
+.header__button-green {
+  color: #000;
+  background-color: #3ddc84;
+  min-width: 76px;
+  border-radius: 3px;
+}
+
+.header__account-button {
+  width: 100px;
+  height: 32px;
+  background: #202020;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.header__account-image {
+  object-fit: cover;
+  width: 100px;
+  height: 32px;
+  padding-top: 4px;
+}
+
+.header__account-button:hover {
+  opacity: 0.6;
+}
+
+.header__menu-button {
+  background-color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  display: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header__menu-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1023px) {
   .header {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding: 0 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header__button-container_films {
+    display: none;
+  }
+
+  .header__account-button {
+    display: none;
+  }
+
+  .header__menu-button {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header {
+    padding: 0 14px;
+  }
+
+  .header__button-container {
+    gap: 14px;
+  }
+
+  .header__button {
+    min-height: 26px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .header__button-green {
+    min-width: 54px;
   }
 }

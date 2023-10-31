@@ -1,62 +1,65 @@
-import React, {useState} from "react";
-import { useLocation } from "react-router-dom";
-import './Login.css';
-import { PageWithForm } from "../PageWithForm/PageWithForm";
-import { Form } from '../Form/Form';
-import { FormWrapper } from '../FormWrapper/FormWrapper';
-import { TitlePageWithForm } from '../TitlePageWithForm/TitlePageWithForm';
-import { AlternativeAction } from '../AlternativeAction/AlternativeAction';
-import { Logo } from '../Logo/Logo';
+import React from "react";
+import "../Form/Form.css";
+import Form from "../Form/Form";
+import { EMAIL_ADRESS_REGEX } from "../../utils/constants";
+import useForm from "../../hooks/useForm";
 
+function Login({ onAuthorization, isLoading }) {
+  const { enteredValues, errors, handleChangeInput, isFormValid } = useForm();
 
-function Login() {
-  const location = useLocation();
-  const locationString = (location.pathname).match(/\w/gi).join("");
-  const err = {message: ""};
-
-  const [formValue, setFormValue] = useState({
-    email: "",
-    password: ""
-  });
-
-  const handleChange = (e) => {
-    const {name, value} = e.target;
-
-    setFormValue({
-      ...formValue,
-      [name]: value
+  function getSubmitForm(event) {
+    event.preventDefault();
+    onAuthorization({
+      email: enteredValues.email,
+      password: enteredValues.password,
     });
-  };
+  }
 
   return (
-    <PageWithForm clName={locationString} ariaLabel="раздел входа в аккаунт">
-      <FormWrapper>
-        <>
-          <Logo />
-          <TitlePageWithForm title={"Рады видеть!"}/>
-          <Form 
-            name = {`form-${locationString}`}
-            clName = {locationString}
-            textButton = {"Войти"}
-          >
-            <>
-              <label htmlFor="input-email" className="form__label">
-                E-mail
-                <input className="form__input" id="input-email" type="email" name="email" value={formValue.email} onChange={handleChange} maxLength="30" placeholder="Введите e-mail" required />
-                <span className="form__error">{err.message || ""}</span>
-              </label>
-              <label htmlFor="input-password" className="form__label">
-                Пароль
-                <input className={`form__input ${err.message ? "form__input_error" : ""}`} id="input-password" type="password" name="password" value={formValue.password} onChange={handleChange} placeholder="Введите пароль" minLength="8" maxLength="30" required />
-                <span className="form__error">{err.message || ""}</span>
-              </label>
-            </>
-          </Form>       
-        </>
-      </FormWrapper>
-      <AlternativeAction/>
-    </PageWithForm>
+    <Form
+      title="Рады видеть!"
+      buttonText="Войти"
+      formQuestionText="Еще не зарегистрированы?"
+      linkText=" Регистрация"
+      link="/signup"
+      isDisabledButton={!isFormValid}
+      isLoading={isLoading}
+      onSubmit={getSubmitForm}
+      noValidate
+    >
+      <label className="form__label">
+        E-mail
+        <input
+          name="email"
+          className="form__input"
+          id="email-input"
+          type="email"
+          onChange={handleChangeInput}
+          pattern={EMAIL_ADRESS_REGEX}
+          value={enteredValues.email || ""}
+          placeholder="почта"
+          required
+        />
+        <span className="form__input-error">{errors.email}</span>
+      </label>
+      <label className="form__label">
+        Пароль
+        <input
+          name="password"
+          className="form__input"
+          id="password-input"
+          type="password"
+          minLength="4"
+          maxLength="10"
+          onChange={handleChangeInput}
+          value={enteredValues.password || ""}
+          placeholder="пароль"
+          required
+        />
+        <span className="form__input-error">{errors.password}</span>
+      </label>
+    </Form>
   );
 }
 
-export {Login};
+export default Login;

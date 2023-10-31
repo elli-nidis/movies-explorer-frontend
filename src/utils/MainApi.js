@@ -1,104 +1,103 @@
-  
-  // # возвращает информацию о пользователе (email и имя)
-  // GET /users/me
-  
-  // # обновляет информацию о пользователе (email и имя)
-  // PATCH /users/me
-  
-  // # возвращает все сохранённые текущим пользователем фильмы
-  // GET /movies
-  
-  // # создаёт фильм с переданными в теле
-  // # country, director, duration, year, description, image, trailer, nameRU, nameEN и thumbnail, movieId 
-  // POST /movies
-  
-  // # удаляет сохранённый фильм по id
-  // DELETE /movies/_id
+import { BASE_URL } from "./AdressApiConfig";
+import { handleSendRequest } from "./handleSendRequest";
 
-//   country — страна создания фильма. Обязательное поле-строка.
-// director — режиссёр фильма. Обязательное поле-строка.
-// duration — длительность фильма. Обязательное поле-число.
-// year — год выпуска фильма. Обязательное поле-строка.
-// description — описание фильма. Обязательное поле-строка.
-// image — ссылка на постер к фильму. Обязательное поле-строка. Запишите её URL-адресом.
-// trailerLink — ссылка на трейлер фильма. Обязательное поле-строка. Запишите её URL-адресом.
-// thumbnail — миниатюрное изображение постера к фильму. Обязательное поле-строка. Запишите её URL-адресом.
-// owner — _id пользователя, который сохранил фильм. Обязательное поле.
-// movieId — id фильма, который содержится в ответе сервиса MoviesExplorer. Обязательное поле в формате number.
-// nameRU — название фильма на русском языке. Обязательное поле-строка.
-// nameEN — название фильма на английском языке. Обязательное поле-строка.
-  
-  
-  //запрашиваю на сервере данные пользователя, получаю объект
-  // getUser() {
-  //   return fetch(`${this._baseUrl}/users/me`, {
-  //     headers: this._headers,
-  //     credentials: 'include',
-  //   })
-  //   .then(this._checkResponse);
-  // }
+export const getContent = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => handleSendRequest(res));
+};
 
-   //меняю данные пользователя на сервере
-  //  patchUser(data) {
-  //   return fetch(`${this._baseUrl}/users/me`, {
-  //     method: 'PATCH',
-  //     headers: this._headers,
-  //     credentials: 'include',
-  //     body: JSON.stringify({
-  //       name: data.name,
-  //       about: data.description,
-  //     })
-  //   })
-  //   .then(this._checkResponse);
-  // }
+export const getMovies = () => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => handleSendRequest(res));
+};
 
-    //меняю аватар на сервере
-    // patchAvatar(data) {
-    //   return fetch(`${this._baseUrl}/users/me/avatar`, {
-    //     method: 'PATCH',
-    //     headers: this._headers,
-    //     credentials: 'include',
-    //     body: JSON.stringify({
-    //       avatar: data.avatar,
-    //     })
-    //   })
-    //   .then(this._checkResponse);
-    // }
+export const register = (name, email, password) => {
+  return fetch(`${BASE_URL}/signup`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, password }),
+  }).then((res) => handleSendRequest(res));
+};
 
-      // отправляю лайк на сервер
-  //  putLike(idCard) {
-  //   // console.log(`putLike idCard ${idCard}`);
-  //   return fetch(`${this._baseUrl}/cards/${idCard}/likes`, {
-  //     method: 'PUT',
-  //     credentials: 'include',
-  //     headers: this._headers,
-  //   })
-  //   .then(this._checkResponse);
-  // }
+export const authorize = (email, password) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  }).then((res) => handleSendRequest(res));
+};
 
-    // удаляю лайк с сервера
-    // deleteLike(idCard) {
-    //   // console.log(`deleteLike idCard ${idCard}`);
-    //   return fetch(`${this._baseUrl}/cards/${idCard}/likes`, {
-    //     method: 'DELETE',
-    //     credentials: 'include',
-    //     headers: this._headers,
-    //   })
-    //   .then(this._checkResponse);
-    // }
+export const getUserInfo = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => handleSendRequest(res));
+};
 
-    
-  // меняю статус лайка
-  // changeLikeCardStatus(isLiked, idCard) {
-  //   return isLiked ? this.deleteLike(idCard) : this.putLike(idCard);
-  // }
+export const editUserInfo = (data) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: data.name,
+      email: data.email,
+    }),
+  }).then((res) => handleSendRequest(res));
+};
 
-   // удаляю карточку с сервера
-  //  deleteCard(idCard) {
-  //   return fetch(`${this._baseUrl}/cards/${idCard}`, {
-  //     method: 'DELETE',
-  //     headers: this._headers,
-  //     credentials: 'include',
-  //   })
-  //   .then(this._checkResponse);
-  // }
+export const addCardServer = (data) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      country: data.country,
+      director: data.director,
+      duration: data.duration,
+      year: data.year,
+      description: data.description,
+      image: "https://api.nomoreparties.co" + data.image.url,
+      trailerLink: data.trailerLink,
+      thumbnail:
+        "https://api.nomoreparties.co" + data.image.formats.thumbnail.url,
+      movieId: data.id,
+      nameRU: data.nameRU,
+      nameEN: data.nameEN,
+    }),
+  }).then((res) => handleSendRequest(res));
+};
+
+export const deleteCard = (cardId) => {
+  return fetch(`${BASE_URL}/movies/${cardId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => handleSendRequest(res));
+};

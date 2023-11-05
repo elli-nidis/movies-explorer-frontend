@@ -1,50 +1,59 @@
-//Компонент Navigation представляет навигационное меню.
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import account from "../../images/profile.svg";
-import "./Navigation.css";
+import { NavLink, useLocation } from "react-router-dom";
+import './Navigation.css';
+import icon from '../../images/icon-account.svg';
 
-function Navigation({ handleCloseMobileMenu }) {
-  const setActiveLinkHeader = ({ isActive }) =>
-    isActive ? "navigation__link_active" : "navigation__link";
 
-  return (
-    <div className="navigation__page-overlay">
-      <div className="navigation__overlay-container"></div>
-      <div className="navigation__menu">
-        <button
-          className="navigation__close-button"
-          onClick={handleCloseMobileMenu}
-        ></button>
-        <nav className="navigation__links">
-          <NavLink to="/" className={setActiveLinkHeader}>
-            Главная
-          </NavLink>
-          <NavLink
-            to="/movies"
-            onClick={handleCloseMobileMenu}
-            className={setActiveLinkHeader}
-          >
-            Фильмы
-          </NavLink>
-          <NavLink
-            to="/saved-movies"
-            onClick={handleCloseMobileMenu}
-            className={setActiveLinkHeader}
-          >
-            Сохранённые фильмы
-          </NavLink>
-        </nav>
-        <Link
-          to="/profile"
-          className="navigation__account-button"
-          onClick={handleCloseMobileMenu}
-        >
-          <img src={account} alt="аккаунт" />
-        </Link>
-      </div>
-    </div>
-  );
+function Navigation({loggedIn, isOpenedMenu, onOpenMenu, onCloseMenu}) {
+
+  const location = useLocation();
+
+  return (loggedIn ?
+    (
+      <nav className={`navigation navigation_logged  ${isOpenedMenu ? "visible fixed" : ""}`}>
+        <ul className="menu menu_logged">
+          <div className="menu__pages">
+            {isOpenedMenu && (
+              <li className="menu__item">
+              <NavLink to="/" className={({isActive}) => `menu__link menu__link_logged ${(isActive && isOpenedMenu) ? "menu__link_active-opened-menu" : (isActive && !isOpenedMenu) ? "menu__link_active-closed-menu" : ""}`} onClick={onCloseMenu}>Главная</NavLink>
+            </li>
+            )}
+            <li className="menu__item">
+              <NavLink to="/movies" className={({isActive}) => `menu__link menu__link_logged ${(isActive && isOpenedMenu) ? "menu__link_active-opened-menu" : (isActive && !isOpenedMenu) ? "menu__link_active-closed-menu" : ""}`} onClick={onCloseMenu}>Фильмы</NavLink>
+            </li>
+            <li className="menu__item">
+              <NavLink to="/saved-movies" className={({isActive}) => `menu__link menu__link_logged ${(isActive && isOpenedMenu) ? "menu__link_active-opened-menu" : (isActive && !isOpenedMenu) ? "menu__link_active-closed-menu" : ""}`} onClick={onCloseMenu}>Сохранённые фильмы</NavLink>
+            </li>
+          </div>
+          <div className="menu__account">
+            <li className="menu__item">
+              <NavLink to="/profile" className={({isActive}) => `menu__link menu__link_logged account ${(isActive && isOpenedMenu) ? "menu__link_active-opened-menu" : (isActive && !isOpenedMenu) ? "menu__link_active-closed-menu" : ""}`} onClick={onCloseMenu}>
+                Аккаунт
+                <div className={`menu__icon-wrapper ${location.pathname === "/" ? "menu__icon-wrapper_main-page-color" : ""}`}>
+                  <img src={icon} alt="иконка человек" className="menu__icon" />
+                </div>
+              </NavLink>
+            </li>
+          </div> 
+      </ul> 
+      <button className={`navigation__button navigation__button_open ${isOpenedMenu ? "out" : ""} hidden`} type="button" onClick={onOpenMenu}></button>
+      <button className={`navigation__button navigation__button_close hidden ${isOpenedMenu ? "visible" : ""}`} type="button" onClick={onCloseMenu}></button>
+      </nav>
+    )
+    : (
+        <nav className="navigation navigation_unlogged">
+          <ul className="menu menu_unlogged">
+            <li className="menu__item menu__item_unlugged">
+              <NavLink to="/signup" className="menu__link  menu__link_unlogged">Регистрация</NavLink>
+            </li>
+            <li className="menu__item menu__item_unlugged">
+              <NavLink to="/signin" className="menu__link menu__link_unlogged">
+                <button className="menu__signin-button" type="button">Войти</button>
+              </NavLink>
+            </li>
+          </ul> 
+      </nav>
+    ));
 }
 
-export default Navigation;
+export {Navigation};

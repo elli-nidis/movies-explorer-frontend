@@ -1,6 +1,6 @@
 import React from "react";
 import "./MoviesCard.css";
-import { durationConverterMovies } from "../../../utils/utilsHelpers";
+import { convertDurationToFullTime } from "../../../utils/utilsHelpers";
 
 function MoviesCard({
   card,
@@ -10,9 +10,9 @@ function MoviesCard({
   saved,
   savedMovies,
 }) {
-  const cardLikeButtonClassName = `${
-    saved ? "moviesCard__button moviesCard__button_saved" : "moviesCard__button"
-  }`;
+  // const cardLikeButtonClassName = `${
+  //   saved ? "movies-card__button movies-card__button_saved" : "movies-card__button"
+  // }`;
 
   function onCardClick() {
     if (saved) {
@@ -27,19 +27,23 @@ function MoviesCard({
   }
 
   return (
-    <>
-      <article className="moviesCard" key={card.id}>
-        <div className="moviesCard__caption">
-          <h2 className="moviesCard__text">{card.nameRU}</h2>
-          <span className="moviesCard__duration">
-            {durationConverterMovies(card.duration)}
-          </span>
-        </div>
+    <li className="movies-card" key={card.id}>
+      <figure className="movies-card__item">
+        {/* <div className="movies-card__caption"> */}
+        <figcaption className="movies-card__caption">
+          <h2 className="movies-card__title">{card.nameRU}</h2>      
+          <p className="movies-card__duration">{convertDurationToFullTime(card.duration)}</p>
+        </figcaption>
+          {/* <h2 className="movies-card__title">{card.nameRU}</h2> */}
+          {/* <span className="movies-card__duration">
+            {convertDurationToFullTime(card.duration)}
+          </span> */}
+        {/* </div> */}
 
-        <a href={card.trailerLink} target="_blank" rel="noreferrer">
+        <a href={card.trailerLink} target="_blank" rel="noopener noreferrer">
           <img
-            className="moviesCard__image"
-            alt={card.nameRU}
+            className="movies-card__img"
+            alt={`Обложка фильма ${card.nameRU}`}
             src={
               isSavedFilms
                 ? card.image
@@ -47,24 +51,26 @@ function MoviesCard({
             }
           />
         </a>
+      </figure>
 
-        <div className="moviesCard__save-container">
+        {/* <div className="movies-card__save-container"> */}
           {isSavedFilms ? (
             <button
               type="button"
-              className="moviesCard__button_delete"
+              className="movies-card__button movies-card__button_delete"
+              aria-label="удалить фильм"
               onClick={onDelete}
             ></button>
           ) : (
             <button
               type="button"
-              className={cardLikeButtonClassName}
+              className={`movies-card__button ${!saved ? "movies-card__button_save" : "movies-card__button_saved"}`}
+              aria-label="сохранить фильм"
               onClick={onCardClick}
             ></button>
           )}
-        </div>
-      </article>
-    </>
+        {/* </div> */}
+      </li>
   );
 }
 

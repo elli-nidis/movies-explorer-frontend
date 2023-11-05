@@ -12,13 +12,17 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../Movies/SavedMovies/SavedMovies";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import Promo from "../Promo/Promo";
+import AboutProject from "../AboutProject/AboutProject";
+import Techs from "../Techs/Techs";
+import AboutMe from "../AboutMe/AboutMe";
 import Footer from "../Footer/Footer";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
-import Profile from "../Main/Profile/Profile";
+import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
-import NotFound from "../NotFound/NotFound";
-import InfoTooltipUpdate from "../infoTooltipUpdate/infoTooltipUpdate";
+import PageNotFound from "../PageNotFound/PageNotFound";
+// import InfoTooltipUpdate from "../infoTooltipUpdate/infoTooltipUpdate";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import * as api from "../../utils/MainApi";
 
@@ -29,15 +33,27 @@ function App() {
   const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] =
     React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
-  const [isInfoToolTipUpdatePopupOpen, setInfoToolTipUpdatePopupOpen] =
-    React.useState(false);
-  const [isUpdate, setIsUpdate] = React.useState(false);
+  const [openedMenu, setOpenedMenu] = React.useState(false);
+  // const [isInfoToolTipUpdatePopupOpen, setInfoToolTipUpdatePopupOpen] = React.useState(false);
+  // const [isUpdate, setIsUpdate] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-  const isOpenPopup = isInfoToolTipPopupOpen || isInfoToolTipUpdatePopupOpen;
+  // const isOpenPopup = isInfoToolTipPopupOpen || isInfoToolTipUpdatePopupOpen;
+  const isOpenPopup = isInfoToolTipPopupOpen;
+  const [infoTooltipParams, setInfoTooltipParams] = React.useState({});
 
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
+
+  function openMenu() {
+    setOpenedMenu(true);
+    console.log(openedMenu);
+  }
+
+  function closeMenu() {
+    setOpenedMenu(false);
+    console.log(openedMenu);
+  }
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -98,12 +114,11 @@ function App() {
     api
       .register(name, email, password)
       .then(() => {
-        setInfoToolTipPopupOpen(true);
-        setIsSuccess(true);
         handleLoginUser({ email, password });
       })
       .catch((err) => {
         setInfoToolTipPopupOpen(true);
+        setInfoTooltipParams({imgLink: 'failure', text: 'Что-то пошло не так! Попробуйте ещё раз.', name: 'Неудачная регистрация'});
         setIsSuccess(false);
         console.log(err);
       });
@@ -115,16 +130,16 @@ function App() {
       .then((res) => {
         if (res) {
           setInfoToolTipPopupOpen(true);
+          setInfoTooltipParams({imgLink: 'success', text: 'Успешно!', name: 'Успешная авторизация'});
           setIsSuccess(true);
           localStorage.setItem("jwt", res.token);
-
           navigate("/movies", { replace: true });
-
           setIsLoggedIn(true);
         }
       })
       .catch((err) => {
         setInfoToolTipPopupOpen(true);
+        setInfoTooltipParams({imgLink: 'failure', text: 'Что-то пошло не так! Попробуйте ещё раз.', name: 'Неудачная авторизация'});
         setIsSuccess(false);
         console.log(err);
       });
@@ -162,14 +177,18 @@ function App() {
     api
       .editUserInfo(newUserInfo)
       .then((data) => {
-        setInfoToolTipUpdatePopupOpen(true);
-        setIsUpdate(true);
+        // setInfoToolTipUpdatePopupOpen(true);
+        setInfoToolTipPopupOpen(true);
+        setInfoTooltipParams({imgLink: 'success', text: 'Данные обновлены!', name: 'Успешное обновление'});
+        // setIsUpdate(true);
 
         setCurrentUser(data);
       })
       .catch((err) => {
-        setInfoToolTipUpdatePopupOpen(true);
-        setIsUpdate(false);
+        // setInfoToolTipUpdatePopupOpen(true);
+        setInfoToolTipPopupOpen(true);
+        setInfoTooltipParams({imgLink: 'failure', text: 'Что-то пошло не так! Попробуйте ещё раз.', name: 'Неудачное обновление'});
+        // setIsUpdate(false);
 
         console.log(err);
         handleUnauthorized(err);
@@ -194,7 +213,8 @@ function App() {
 
   function closeAllPopup() {
     setInfoToolTipPopupOpen(false);
-    setInfoToolTipUpdatePopupOpen(false);
+    
+    // setInfoToolTipUpdatePopupOpen(false);
   }
 
   function closeByOverlayPopup(event) {
@@ -205,15 +225,29 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <div className="page__content">
+      <div className={`page ${openedMenu ? "cover" : ""}`}>
+        {/* <div className="page__content"> */}
           <Routes>
             <Route
               path={"/"}
               element={
                 <>
-                  <Header loggedIn={isLoggedIn} />
-                  <Main />
+                  <Header
+                    loggedIn={isLoggedIn}
+                    isOpenedMenu={openedMenu}
+                    onOpenMenu={openMenu}
+                    onCloseMenu={closeMenu}
+                  />
+                  <Main
+                    children={
+                      <>
+                        <Promo />
+                        <AboutProject />
+                        <Techs />
+                        <AboutMe />
+                      </>
+                    }
+                  />
                   <Footer />
                 </>
               }
@@ -225,10 +259,12 @@ function App() {
                 isLoggedIn ? (
                   <Navigate to="/movies" replace />
                 ) : (
-                  <Login
-                    isLoading={isLoading}
-                    onAuthorization={handleLoginUser}
-                  />
+                  <Main children={
+                    <Login
+                      isLoading={isLoading}
+                      onAuthorization={handleLoginUser}
+                    />
+                  }/>
                 )
               }
             />
@@ -239,72 +275,110 @@ function App() {
                 isLoggedIn ? (
                   <Navigate to="/movies" replace />
                 ) : (
-                  <Register
-                    isLoading={isLoading}
-                    onRegister={handleRegistrationUser}
-                  />
+                  <Main children={
+                    <Register
+                      isLoading={isLoading}
+                      onRegister={handleRegistrationUser}
+                    />
+                  }/>
                 )
               }
             />
 
-            <Route path={"*"} element={<NotFound />} />
+            {/* <Route path={"*"} element={<PageNotFound />} /> */}
 
             <Route
               path={"/movies"}
               element={
-                <ProtectedRoute
-                  path="/movies"
-                  component={Movies}
-                  savedMovies={savedMovies}
-                  loggedIn={isLoggedIn}
-                  onDeleteCard={handleDeleteMovieServer}
-                  handleLikeFilm={handleAddMovieServer}
-                />
+                <>
+                  <Header
+                    loggedIn={isLoggedIn}
+                    isOpenedMenu={openedMenu}
+                    onOpenMenu={openMenu}
+                    onCloseMenu={closeMenu}
+                  />
+                  <Main children={
+                    <ProtectedRoute
+                    path="/movies"
+                    component={Movies}
+                    savedMovies={savedMovies}
+                    loggedIn={isLoggedIn}
+                    onDeleteCard={handleDeleteMovieServer}
+                    handleLikeFilm={handleAddMovieServer}
+                    />
+                  }/>
+                <Footer />
+                </>
+                
               }
             />
 
             <Route
               path={"/saved-movies"}
               element={
-                <ProtectedRoute
+                <>
+                  <Header
+                    loggedIn={isLoggedIn}
+                    isOpenedMenu={openedMenu}
+                    onOpenMenu={openMenu}
+                    onCloseMenu={closeMenu}
+                  />
+                  <ProtectedRoute
                   path="/saved-movies"
                   component={SavedMovies}
                   savedMovies={savedMovies}
                   loggedIn={isLoggedIn}
                   onDeleteCard={handleDeleteMovieServer}
-                />
+                  />
+                  <Footer />
+                </>
+                
               }
             />
 
             <Route
               path={"/profile"}
               element={
-                <ProtectedRoute
-                  path="/profile"
-                  component={Profile}
-                  signOut={handleExitSiteMovie}
-                  onUpdateUser={handleEditUserInfo}
-                  loggedIn={isLoggedIn}
-                  isLoading={isLoading}
-                />
+                <>
+                  <Header
+                    loggedIn={isLoggedIn}
+                    isOpenedMenu={openedMenu}
+                    onOpenMenu={openMenu}
+                    onCloseMenu={closeMenu}
+                  />
+                   <Main children={
+                      <ProtectedRoute
+                      path="/profile"
+                      component={Profile}
+                      signOut={handleExitSiteMovie}
+                      onUpdateUser={handleEditUserInfo}
+                      loggedIn={isLoggedIn}
+                      isLoading={isLoading}
+                    />
+                   }/>
+                </>
               }
             />
+
+            <Route path={"*"} element={<PageNotFound />} />
           </Routes>
 
           <InfoTooltip
+            infoTooltipParams={infoTooltipParams}
             isOpenPopup={isInfoToolTipPopupOpen}
             isSuccess={isSuccess}
             onCloseOverlay={closeByOverlayPopup}
             onClose={closeAllPopup}
+            // isUpdate={isUpdate}
           />
 
-          <InfoTooltipUpdate
+          {/* <InfoTooltipUpdate
             isOpenPopup={isInfoToolTipUpdatePopupOpen}
             isUpdate={isUpdate}
             onCloseOverlay={closeByOverlayPopup}
             onClose={closeAllPopup}
-          />
-        </div>
+          /> */}
+        {/* </div> */}
       </div>
     </CurrentUserContext.Provider>
   );

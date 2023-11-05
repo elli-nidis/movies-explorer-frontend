@@ -1,0 +1,78 @@
+.not-found {
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: calc((100vh - (185px + 5px + 20px)) / 2);
+  row-gap: 184px;
+}
+
+.not-found__info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 5px;
+}
+
+.not-found__title {
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 140px;
+  font-weight: 400;
+  line-height: 1.21;
+  color: #fff;
+  padding: 0px;
+  margin: 0px;
+}
+
+.not-found__text {
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.21;
+  color: #fff;
+  padding: 0px;
+  margin: 0px;
+}
+
+.not-found__button {
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  color: #4285f4;
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.not-found__button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 450px) {
+  .not-found {
+    justify-content: space-between;
+    padding-top: calc((100vh - (97px + 10px + 15px)) / 2);
+    padding-bottom: 30px;
+    row-gap: unset;
+  }
+
+  .not-found__info {
+    row-gap: 10px;
+  }
+
+  .not-found__title {
+    font-size: 80px;
+  }
+
+  .not-found__text {
+    font-size: 12px;
+  }
+
+  .not-found__button {
+    font-size: 12px;
+  }
+}

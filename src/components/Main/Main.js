@@ -1,21 +1,28 @@
 import React from "react";
-import Promo from "../Main/Promo/Promo";
-import AboutProject from "./AboutProject/AboutProject";
-import Techs from "./Techs/Techs";
-import AboutMe from "./AboutMe/AboutMe";
-import Portfolio from "./Portfolio/Portfolio";
+import "./Main.css";
+// import Promo from "../Main/Promo/Promo";
+// import AboutProject from "./AboutProject/AboutProject";
+// import Techs from "./Techs/Techs";
+// import AboutMe from "./AboutMe/AboutMe";
 
 // Определение компонента Main
-function Main() {
+function Main({children}) {
   return (
-    <main>
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+    <main className="main">
+      {children}
     </main>
   );
 }
+
+// function Main() {
+//   return (
+//     <main>
+//       <Promo />
+//       <AboutProject />
+//       <Techs />
+//       <AboutMe />
+//     </main>
+//   );
+// }
 
 export default Main;

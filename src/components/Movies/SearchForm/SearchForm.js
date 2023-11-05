@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import FilterCheckbox from "../../FilterCheckbox/FilterCheckbox";
+// import FilterCheckbox from "../../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
 function SearchForm({ getSearchMoviesData, onFilterMovies, isShortFilm }) {
@@ -34,32 +34,47 @@ function SearchForm({ getSearchMoviesData, onFilterMovies, isShortFilm }) {
 
   return (
     <section className="search">
-      <form className="search__form" id="form" onSubmit={getSubmitForm}>
+      <form className="search__form" id="form" onSubmit={getSubmitForm} noValidate>
         <input
           name="query"
-          className="search__input"
-          id="search-input"
+          className="search__box"
+          id="search__box"
           type="text"
-          placeholder="Фильм"
+          placeholder={isQueryError ? "Нужно ввести ключевое слово" : "Фильм"}
           onChange={getCheckQueryInputForm}
           value={query || ""}
+          minLength="1"
+          required
         ></input>
 
-        <button className="search__button" type="submit">
+        <button
+          className="search__button-search"
+          type="submit"
+          aria-label="кнопка поиск"
+        >
           Поиск
         </button>
+
+        <label htmlFor="short-films" className="search__label-metrage" name="metrage" value="short-films">
+          <input type="checkbox" className="search__checkbox-metrage" id="short-films" checked={isShortFilm} onChange={onFilterMovies}/>
+          
+          <span className="search__pseudo-item"></span>
+          <span className="search__label-text">Короткометражки</span>
+          {/* {isQueryError && (<span className="search__error">Нужно ввести ключевое слово</span>)} */}
+        </label>
+        
       </form>
 
-      <FilterCheckbox
+
+
+      {/* <FilterCheckbox
         isShortFilm={isShortFilm}
         onFilterMovies={onFilterMovies}
-      />
+      /> */}
 
-      {isQueryError && (
-        <span className="search__form-error">Нужно ввести ключевое слово</span>
-      )}
+      
 
-      <div className="search__border-bottom"></div>
+      {/* <div className="search__border-bottom"></div> */}
     </section>
   );
 }

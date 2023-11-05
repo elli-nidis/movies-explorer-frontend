@@ -3,8 +3,9 @@ import { useLocation } from "react-router-dom";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import SearchError from "../SearchForm/SearchError/SearchError";
+import MoviesShowMoreButton from "../MoviesShowMoreButton/MoviesShowMoreButton";
 import Preloader from "../../Preloader/Preloader";
-import { ERROR_TEXT_SERVER, ERROR_TEXT } from "../../../utils/constants";
+import { ERROR_TEXT_SERVER, MOVIES_NOT_FOUND } from "../../../utils/constants";
 
 function MoviesCardList({
   cards,
@@ -60,9 +61,9 @@ function MoviesCardList({
   }, [cards]);
 
   return (
-    <section className="cards">
+    <section className="movies-card-list" aria-label="раздел с фильмами">
       {isLoading && <Preloader />}
-      {isNotFound && !isLoading && <SearchError errorText={ERROR_TEXT} />}
+      {isNotFound && !isLoading && <SearchError errorText={MOVIES_NOT_FOUND} />}
       {isReqError && !isLoading && (
         <SearchError errorText={ERROR_TEXT_SERVER} />
       )}
@@ -70,7 +71,7 @@ function MoviesCardList({
         <>
           {pathname === "/saved-movies" ? (
             <>
-              <ul className="cards__list">
+              <ul className="movies-grid">
                 {cards.map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
@@ -84,11 +85,11 @@ function MoviesCardList({
                   />
                 ))}
               </ul>
-              <div className="cards__button-container"></div>
+              {/* <div className="cards__button-container"></div> */}
             </>
           ) : (
             <>
-              <ul className="cards__list">
+              <ul className="movies-grid">
                 {cards.slice(0, shownMovies).map((card) => (
                   <MoviesCard
                     key={isSavedFilms ? card._id : card.id}
@@ -102,18 +103,9 @@ function MoviesCardList({
                   />
                 ))}
               </ul>
-              <div className="cards__button-container">
-                {cards.length > shownMovies ? (
-                  <button
-                    className="cards__button"
-                    onClick={handleAddWithDisplayMovieClick}
-                  >
-                    Ещё
-                  </button>
-                ) : (
-                  ""
-                )}
-              </div>
+              {/* <div className="cards__button-container"> */}
+                {cards.length > shownMovies && (<MoviesShowMoreButton onClick={handleAddWithDisplayMovieClick}/>)}
+              {/* </div> */}
             </>
           )}
         </>

@@ -1,7 +1,8 @@
-export function durationConverterMovies(duration) {
+export function convertDurationToFullTime(duration) {
   const hours = Math.floor(duration / 60);
-  const minutes = duration % 60;
-  return `${hours}ч ${minutes}м`;
+  const minutes = hours > 0 ? (duration % (hours * 60)).toString() : (duration).toString();
+  const fullMinutes = minutes.length > 1 ? minutes : "0" +  minutes;
+  return `${hours}ч ${fullMinutes}м`;
 }
 
 export function filterDurationMovies(movies) {

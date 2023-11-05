@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Header from "../../Header/Header";
+// import Header from "../../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-import Footer from "../../Footer/Footer";
+// import Footer from "../../Footer/Footer";
 import {
   filterMovies,
   filterDurationMovies,
@@ -40,7 +40,7 @@ function SavedMovies({ loggedIn, savedMovies, onDeleteCard }) {
 
   return (
     <section className="movies">
-      <Header loggedIn={loggedIn} />
+      {/* <Header loggedIn={loggedIn} /> */}
       <SearchForm
         onFilterMovies={getShortToggleMovie}
         getSearchMoviesData={getSearchMoviesData}
@@ -52,7 +52,7 @@ function SavedMovies({ loggedIn, savedMovies, onDeleteCard }) {
         cards={filteredMovies}
         isNotFound={isNotFound}
       />
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 }

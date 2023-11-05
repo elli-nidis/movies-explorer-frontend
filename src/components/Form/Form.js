@@ -1,48 +1,28 @@
 import React from "react";
-import logo from "../../images/logo.svg";
-import { Link } from "react-router-dom";
-import "./Form.css";
+import { useLocation } from "react-router-dom";
+import './Form.css';
 
-function Form({
-  children,
-  title,
-  buttonText,
-  formQuestionText,
-  linkText,
-  link,
-  onSubmit,
-  isDisabledButton,
-  isLoading,
-}) {
+function Form({name, clName, textButton, onSubmit, isDisabledButton, isLoading, isLastValues, ...props}) {
+
+  const location = useLocation();
+  const err = {message: ""};
+
   return (
-    <>
-      <div className="form__container">
-        <Link to="/" className="form__logo">
-          <img src={logo} alt="логотип cайта" />
-        </Link>
-        <h3 className="form__title">{title}</h3>
-        <form className="form" id="form" onSubmit={onSubmit} noValidate>
-          {children}
-          <button
-            type="submit"
-            disabled={isDisabledButton ? true : false}
-            className={
-              isDisabledButton || isLoading
-                ? "form__button-save form__button-save_inactive"
-                : "form__button-save"
-            }
-          >
-            {buttonText}
-          </button>
-        </form>
-        <p className="form__text">
-          {formQuestionText}
-          <Link to={link} className="form__link">
-            {linkText}
-          </Link>
-        </p>
-      </div>
-    </>
+   <form name={name} className={`form form_${clName}`} id="form" onSubmit={onSubmit} autoComplete="off" noValidate>
+    <div className={`form__labels-wrapper ${location.pathname === "/profile" ? "form__labels-wrapper_two-side-style" : ""}`}>
+      {props.children}
+    </div>
+    <div className="form__button-wrapper">
+      <p className="form__error-message">{err.message}</p>
+      <button
+        className={`form__button ${location.pathname === "/profile" ? "form__button_link-style" : ""} ${(isDisabledButton ?? isLoading ?? isLastValues) ? "form__button_disabled" : ""}`}
+        aria-label={`кнопка ${textButton}`}
+        type="submit"
+        disabled={isDisabledButton}>
+        {textButton}
+      </button>
+    </div>
+   </form>
   );
 }
 

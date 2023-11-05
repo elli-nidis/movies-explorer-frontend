@@ -1,8 +1,8 @@
 import React from "react";
 import "./Movies.css";
-import Header from "../Header/Header";
+// import Header from "../Header/Header";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import SearchForm from "./SearchForm/SearchForm";
 import { filterMovies, filterDurationMovies } from "../../utils/utilsHelpers";
 import * as movies from "../../utils/MoviesApi";
@@ -100,7 +100,7 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
 
   return (
     <section className="movies">
-      <Header loggedIn={loggedIn} />
+      {/* <Header loggedIn={loggedIn} /> */}
       <SearchForm
         onFilterMovies={getShortToggleMovie}
         isShortFilm={isShortFilm}
@@ -116,7 +116,7 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
         isReqError={isReqError}
         isNotFound={isNotFound}
       />
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 }

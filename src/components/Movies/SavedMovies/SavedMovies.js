@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import Header from "../../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-// import Footer from "../../Footer/Footer";
-import {
-  filterMovies,
-  filterDurationMovies,
-} from "../../../utils/utilsHelpers";
+import { filterMovies, filterDurationMovies } from "../../../utils/utilsHelpers";
 
 function SavedMovies({ loggedIn, savedMovies, onDeleteCard }) {
   const [filteredMovies, setFilteredMovies] = useState(savedMovies);
@@ -40,7 +35,6 @@ function SavedMovies({ loggedIn, savedMovies, onDeleteCard }) {
 
   return (
     <section className="movies">
-      {/* <Header loggedIn={loggedIn} /> */}
       <SearchForm
         onFilterMovies={getShortToggleMovie}
         getSearchMoviesData={getSearchMoviesData}
@@ -52,7 +46,6 @@ function SavedMovies({ loggedIn, savedMovies, onDeleteCard }) {
         cards={filteredMovies}
         isNotFound={isNotFound}
       />
-      {/* <Footer /> */}
     </section>
   );
 }

@@ -1,9 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./Profile.css";
-// import Header from "../../Header/Header";
 import useForm from "../../hooks/useForm";
-
 
 import { PageWithForm } from "../PageWithForm/PageWithForm";
 import Form from '../Form/Form';
@@ -61,15 +59,12 @@ function Profile({ isLoading, signOut, onUpdateUser, loggedIn }) {
 
   return (
     <>
-      {/* <Header loggedIn={loggedIn} /> */}
-      {/* <section className="profile"> */}
       <PageWithForm clName={locationString} ariaLabel="раздел профиля">
         <FormWrapper>
           <>
             <TitlePageWithForm title={`Привет, ${currentUser.name}!`} />
             <Form
               id="form"
-              // className="profile__form"
               clName = {locationString}
               onSubmit={getSubmitForm}
               textButton = "Редактировать"
@@ -116,30 +111,6 @@ function Profile({ isLoading, signOut, onUpdateUser, loggedIn }) {
         </FormWrapper>
         <AlternativeAction onClick={signOut} />
       </PageWithForm>
-
-        {/* <h1 className="profile__title">Привет, {currentUser.name}!</h1> */}
-        
-          
-
-          {/* <div className="profile__border"></div> */}
-          
-          {/* <button
-            type="submit"
-            disabled={!isFormValid ? true : false}
-            className={
-              !isFormValid || isLoading || isLastValues
-                ? "profile__button-save form__button-save_inactive"
-                : "profile__button-save"
-            }
-          >
-            Редактировать
-          </button> */}
-
-          {/* <button type="button" className="profile__exit" onClick={signOut}>
-            Выйти из аккаунта
-          </button> */}
-        {/* </form> */}
-      {/* </section> */}
     </>
   );
 }

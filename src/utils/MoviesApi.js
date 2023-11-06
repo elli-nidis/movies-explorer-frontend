@@ -1,5 +1,5 @@
 import { handleSendRequest } from "./handleSendRequest";
-import { BASE_URL_MOVIES } from "./AdressApiConfig";
+import { BASE_URL_MOVIES } from "./AddressApiConfig";
 
 export function getMovies() {
   return fetch(BASE_URL_MOVIES, {

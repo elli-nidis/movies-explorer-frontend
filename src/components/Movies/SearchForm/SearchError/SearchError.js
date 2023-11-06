@@ -7,7 +7,6 @@ function SearchError({ errorText }) {
       <h2 className="movies-not-found__title">{errorText}</h2>
     </section>
   );
-  // return <p className="search__error search__error_center">{errorText}</p>;
 }
 
 export default SearchError;

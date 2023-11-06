@@ -1,7 +1,5 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-// import "../Form/Form.css";
-// import Form from "../Form/Form";
 
 import { PageWithForm } from "../PageWithForm/PageWithForm";
 import Form from '../Form/Form';
@@ -43,11 +41,7 @@ function Register({ onRegister, isLoading }) {
           <Form
             name = {`form-${locationString}`}
             clName = {locationString}
-            // title="Добро пожаловать!"
             textButton="Зарегистрироваться"
-            // formQuestionText="Уже зарегистрированы?"
-            // linkText=" Войти"
-            // link="/signin"
             isDisabledButton={!isFormValid}
             isLoading={isLoading}
             onSubmit={getSubmitForm}
@@ -107,7 +101,6 @@ function Register({ onRegister, isLoading }) {
       </FormWrapper>
       <AlternativeAction onClick={goToLogin}/>
     </PageWithForm>
-    // </Form>
   );
 }
 

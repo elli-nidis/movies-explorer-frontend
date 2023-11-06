@@ -1,8 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import './Login.css';
-// import "../Form/Form.css";
-// import Form from "../Form/Form";
 
 import { PageWithForm } from "../PageWithForm/PageWithForm";
 import Form from '../Form/Form';
@@ -86,22 +84,7 @@ function Login({ onAuthorization, isLoading }) {
         </>
       </FormWrapper>
       <AlternativeAction onClick={goToRegister}/>
-    </PageWithForm>    
-
-    // <Form
-    //   title="Рады видеть!"
-    //   buttonText="Войти"
-    //   formQuestionText="Еще не зарегистрированы?"
-    //   linkText=" Регистрация"
-    //   link="/signup"
-    //   isDisabledButton={!isFormValid}
-    //   isLoading={isLoading}
-    //   onSubmit={getSubmitForm}
-    //   noValidate
-    // >
-      // 
-      // 
-    // </Form>
+    </PageWithForm>
   );
 }
 

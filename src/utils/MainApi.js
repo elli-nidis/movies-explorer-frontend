@@ -1,4 +1,4 @@
-import { BASE_URL } from "./AdressApiConfig";
+import { BASE_URL } from "./AddressApiConfig";
 import { handleSendRequest } from "./handleSendRequest";
 
 export const getContent = (token) => {

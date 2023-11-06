@@ -4,7 +4,6 @@ import './AlternativeAction.css';
 
 function AlternativeAction({onClick}) {
   const location = useLocation();
-  // const navigate = useNavigate();
 
   const alternativeActionDescription = location.pathname === "/profile" ? ""
   : location.pathname === "/signup" ? "Уже зарегистрированы? "
@@ -12,12 +11,6 @@ function AlternativeAction({onClick}) {
   const textLink = location.pathname === "/profile" ? "Выйти из аккаунта"
   : location.pathname === "/signup" ? "Войти"
   : "Регистрация";
-
-  // function logOut(){
-  //   localStorage.removeItem('token');
-  //   handleLogOut();
-  //   navigate('/', {replace: true});
-  // }
 
   return (
    <p className="alternative-action">
@@ -29,20 +22,6 @@ function AlternativeAction({onClick}) {
       {textLink}
     </button>
    </p>
-
-//   <p className="alternative-action">
-//     {alternativeActionDescription}
-//     <button
-//       className={`alternative-action__button ${location.pathname === "/profile" ? "alternative-action__button_pink" : ""}`}
-//       aria-label={`кнопка ${textButton}`}
-//       type="button"
-//       onClick={`${location.pathname === "/profile" ? logOut
-//       : location.pathname === "/signup" ? navigate("/signin")
-//       : navigate("/signup")}`}
-//       >
-//       {textButton}
-//     </button>
-//  </p>
   );
 }
 

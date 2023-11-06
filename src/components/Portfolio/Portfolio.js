@@ -9,7 +9,6 @@ function Portfolio() {
         <h3 className="portfolio__title">Портфолио</h3>
         <ul className="portfolio__links">
           <li className="portfolio__item">
-            {/* <p className="portfolio__text">Статичный сайт</p> */}
             <a
               href="https://github.com/elli-nidis/russian-travel.git"
               className="portfolio__link"
@@ -21,7 +20,6 @@ function Portfolio() {
             </a>
           </li>
           <li className="portfolio__item">
-            {/* <p className="portfolio__text">Адаптивный сайт</p> */}
             <a
               href="https://github.com/elli-nidis/react-mesto-auth.git"
               className="portfolio__link"
@@ -33,7 +31,6 @@ function Portfolio() {
             </a>
           </li>
           <li className="portfolio__item">
-            {/* <p className="portfolio__text">Одностраничное приложение</p> */}
             <a
               href="https://github.com/elli-nidis/react-mesto-api-full-gha.git"
               className="portfolio__link"

@@ -4,7 +4,7 @@ import './Header.css';
 import { Navigation } from "../Navigation/Navigation";
 import { Logo } from "../Logo/Logo";
 
-function Header({loggedIn, handleLogOut, isOpenedMenu, onOpenMenu, onCloseMenu}) {
+function Header({loggedIn, isOpenedMenu, onOpenMenu, onCloseMenu}) {
   
   const location = useLocation();
 

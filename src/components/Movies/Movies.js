@@ -1,8 +1,6 @@
 import React from "react";
 import "./Movies.css";
-// import Header from "../Header/Header";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
-// import Footer from "../Footer/Footer";
 import SearchForm from "./SearchForm/SearchForm";
 import { filterMovies, filterDurationMovies } from "../../utils/utilsHelpers";
 import * as movies from "../../utils/MoviesApi";
@@ -12,7 +10,7 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
   const [initialCardsMovies, setInitialCardsMovies] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [isShortFilm, setIsShortFilm] = React.useState(false);
-  const [isReqError, setisReqError] = React.useState(false);
+  const [isReqError, setIsReqError] = React.useState(false);
   const [isNotFound, setIsNotFound] = React.useState(false);
 
   React.useEffect(() => {
@@ -86,10 +84,10 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
         .getMovies()
         .then((moviesData) => {
           getEditMoviesFiltered(moviesData, query, isShortFilm);
-          setisReqError(false);
+          setIsReqError(false);
         })
         .catch((err) => {
-          setisReqError(true);
+          setIsReqError(true);
           console.log(err);
         })
         .finally(() => {
@@ -100,7 +98,6 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
 
   return (
     <section className="movies">
-      {/* <Header loggedIn={loggedIn} /> */}
       <SearchForm
         onFilterMovies={getShortToggleMovie}
         isShortFilm={isShortFilm}
@@ -116,7 +113,6 @@ function Movies({ loggedIn, handleLikeFilm, onDeleteCard, savedMovies }) {
         isReqError={isReqError}
         isNotFound={isNotFound}
       />
-      {/* <Footer /> */}
     </section>
   );
 }

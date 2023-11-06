@@ -22,7 +22,6 @@ import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
-// import InfoTooltipUpdate from "../infoTooltipUpdate/infoTooltipUpdate";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import * as api from "../../utils/MainApi";
 
@@ -30,15 +29,11 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] =
-    React.useState(false);
+  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [openedMenu, setOpenedMenu] = React.useState(false);
-  // const [isInfoToolTipUpdatePopupOpen, setInfoToolTipUpdatePopupOpen] = React.useState(false);
-  // const [isUpdate, setIsUpdate] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-  // const isOpenPopup = isInfoToolTipPopupOpen || isInfoToolTipUpdatePopupOpen;
-  const isOpenPopup = isInfoToolTipPopupOpen;
+  const isOpenPopup = isInfoTooltipPopupOpen;
   const [infoTooltipParams, setInfoTooltipParams] = React.useState({});
 
   const navigate = useNavigate();
@@ -117,7 +112,7 @@ function App() {
         handleLoginUser({ email, password });
       })
       .catch((err) => {
-        setInfoToolTipPopupOpen(true);
+        setInfoTooltipPopupOpen(true);
         setInfoTooltipParams({imgLink: 'failure', text: 'Что-то пошло не так! Попробуйте ещё раз.', name: 'Неудачная регистрация'});
         setIsSuccess(false);
         console.log(err);
@@ -129,7 +124,7 @@ function App() {
       .authorize(email, password)
       .then((res) => {
         if (res) {
-          setInfoToolTipPopupOpen(true);
+          setInfoTooltipPopupOpen(true);
           setInfoTooltipParams({imgLink: 'success', text: 'Успешно!', name: 'Успешная авторизация'});
           setIsSuccess(true);
           localStorage.setItem("jwt", res.token);
@@ -138,7 +133,7 @@ function App() {
         }
       })
       .catch((err) => {
-        setInfoToolTipPopupOpen(true);
+        setInfoTooltipPopupOpen(true);
         setInfoTooltipParams({imgLink: 'failure', text: 'Что-то пошло не так! Попробуйте ещё раз.', name: 'Неудачная авторизация'});
         setIsSuccess(false);
         console.log(err);
@@ -177,19 +172,13 @@ function App() {
     api
       .editUserInfo(newUserInfo)
       .then((data) => {
-        // setInfoToolTipUpdatePopupOpen(true);
-        setInfoToolTipPopupOpen(true);
+        setInfoTooltipPopupOpen(true);
         setInfoTooltipParams({imgLink: 'success', text: 'Данные обновлены!', name: 'Успешное обновление'});
-        // setIsUpdate(true);
-
         setCurrentUser(data);
       })
       .catch((err) => {
-        // setInfoToolTipUpdatePopupOpen(true);
-        setInfoToolTipPopupOpen(true);
+        setInfoTooltipPopupOpen(true);
         setInfoTooltipParams({imgLink: 'failure', text: 'Что-то пошло не так! Попробуйте ещё раз.', name: 'Неудачное обновление'});
-        // setIsUpdate(false);
-
         console.log(err);
         handleUnauthorized(err);
       });
@@ -212,9 +201,7 @@ function App() {
   }
 
   function closeAllPopup() {
-    setInfoToolTipPopupOpen(false);
-    
-    // setInfoToolTipUpdatePopupOpen(false);
+    setInfoTooltipPopupOpen(false);
   }
 
   function closeByOverlayPopup(event) {
@@ -226,7 +213,6 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className={`page ${openedMenu ? "cover" : ""}`}>
-        {/* <div className="page__content"> */}
           <Routes>
             <Route
               path={"/"}
@@ -284,8 +270,6 @@ function App() {
                 )
               }
             />
-
-            {/* <Route path={"*"} element={<PageNotFound />} /> */}
 
             <Route
               path={"/movies"}
@@ -365,20 +349,11 @@ function App() {
 
           <InfoTooltip
             infoTooltipParams={infoTooltipParams}
-            isOpenPopup={isInfoToolTipPopupOpen}
+            isOpenPopup={isInfoTooltipPopupOpen}
             isSuccess={isSuccess}
             onCloseOverlay={closeByOverlayPopup}
             onClose={closeAllPopup}
-            // isUpdate={isUpdate}
           />
-
-          {/* <InfoTooltipUpdate
-            isOpenPopup={isInfoToolTipUpdatePopupOpen}
-            isUpdate={isUpdate}
-            onCloseOverlay={closeByOverlayPopup}
-            onClose={closeAllPopup}
-          /> */}
-        {/* </div> */}
       </div>
     </CurrentUserContext.Provider>
   );

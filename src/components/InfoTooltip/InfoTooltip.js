@@ -3,7 +3,7 @@ import "./InfoTooltip.css";
 import successImg from "../../images/success.svg";
 import failureImg from "../../images/failure.svg";
 
-function InfoToolTip(props) {
+function InfoTooltip(props) {
   return (
     <div
       className={`popup popup_bground_half-dark ${props.isOpenPopup ? "popup_opened" : ""}`}
@@ -23,38 +23,7 @@ function InfoToolTip(props) {
         </button>
       </div>
     </div>
-
-// {props.isSuccess ? (
-//   <>
-//   <img
-//     className="popup__signup-image"
-//     src={`${successfully}`}
-//     alt="Успешная регистрация"
-//   />
-//     <p className="popup__signup-title">
-//       Успешная регистрация!
-//     </p>
-//   </>
-// ) : (
-//   <>
-//   <img
-//     className="popup__signup-image"
-//     src={`${unsuccessfully}`}
-//     alt="Что-то пошло не так"
-//   />
-//     <p className="popup__signup-title">
-//       Что-то пошло не так. Попробуйте ещё раз!
-//     </p>
-//   </>
-// )}
-
-// <button
-//   type="button"
-//   className="popup__close-button"
-//   onClick={props.onClose}
-// ></button>
-
   );
 }
 
-export default InfoToolTip;
+export default InfoTooltip;

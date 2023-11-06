@@ -25,9 +25,9 @@ function MoviesCardList({
 
   function handleWithDisplayMovieCounter() {
     const display = window.innerWidth;
-    if (display > 1180) {
+    if (display > 1040) {
       setShownMovies(12);
-    } else if (display > 767) {
+    } else if (display > 610) {
       setShownMovies(8);
     } else {
       setShownMovies(5);
@@ -36,9 +36,9 @@ function MoviesCardList({
 
   function handleAddWithDisplayMovieClick() {
     const display = window.innerWidth;
-    if (display > 1180) {
+    if (display > 1040) {
       setShownMovies(shownMovies + 3);
-    } else if (display > 767) {
+    } else if (display > 610) {
       setShownMovies(shownMovies + 2);
     } else {
       setShownMovies(shownMovies + 2);
@@ -85,7 +85,6 @@ function MoviesCardList({
                   />
                 ))}
               </ul>
-              {/* <div className="cards__button-container"></div> */}
             </>
           ) : (
             <>
@@ -103,9 +102,7 @@ function MoviesCardList({
                   />
                 ))}
               </ul>
-              {/* <div className="cards__button-container"> */}
                 {cards.length > shownMovies && (<MoviesShowMoreButton onClick={handleAddWithDisplayMovieClick}/>)}
-              {/* </div> */}
             </>
           )}
         </>

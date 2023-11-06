@@ -10,9 +10,6 @@ function MoviesCard({
   saved,
   savedMovies,
 }) {
-  // const cardLikeButtonClassName = `${
-  //   saved ? "movies-card__button movies-card__button_saved" : "movies-card__button"
-  // }`;
 
   function onCardClick() {
     if (saved) {
@@ -29,17 +26,10 @@ function MoviesCard({
   return (
     <li className="movies-card" key={card.id}>
       <figure className="movies-card__item">
-        {/* <div className="movies-card__caption"> */}
         <figcaption className="movies-card__caption">
           <h2 className="movies-card__title">{card.nameRU}</h2>      
           <p className="movies-card__duration">{convertDurationToFullTime(card.duration)}</p>
         </figcaption>
-          {/* <h2 className="movies-card__title">{card.nameRU}</h2> */}
-          {/* <span className="movies-card__duration">
-            {convertDurationToFullTime(card.duration)}
-          </span> */}
-        {/* </div> */}
-
         <a href={card.trailerLink} target="_blank" rel="noopener noreferrer">
           <img
             className="movies-card__img"
@@ -52,8 +42,6 @@ function MoviesCard({
           />
         </a>
       </figure>
-
-        {/* <div className="movies-card__save-container"> */}
           {isSavedFilms ? (
             <button
               type="button"
@@ -69,7 +57,6 @@ function MoviesCard({
               onClick={onCardClick}
             ></button>
           )}
-        {/* </div> */}
       </li>
   );
 }

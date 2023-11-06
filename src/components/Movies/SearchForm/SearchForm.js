@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-// import FilterCheckbox from "../../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
 function SearchForm({ getSearchMoviesData, onFilterMovies, isShortFilm }) {
@@ -46,7 +45,6 @@ function SearchForm({ getSearchMoviesData, onFilterMovies, isShortFilm }) {
           minLength="1"
           required
         ></input>
-
         <button
           className="search__button-search"
           type="submit"
@@ -54,27 +52,12 @@ function SearchForm({ getSearchMoviesData, onFilterMovies, isShortFilm }) {
         >
           Поиск
         </button>
-
         <label htmlFor="short-films" className="search__label-metrage" name="metrage" value="short-films">
           <input type="checkbox" className="search__checkbox-metrage" id="short-films" checked={isShortFilm} onChange={onFilterMovies}/>
-          
           <span className="search__pseudo-item"></span>
           <span className="search__label-text">Короткометражки</span>
-          {/* {isQueryError && (<span className="search__error">Нужно ввести ключевое слово</span>)} */}
         </label>
-        
       </form>
-
-
-
-      {/* <FilterCheckbox
-        isShortFilm={isShortFilm}
-        onFilterMovies={onFilterMovies}
-      /> */}
-
-      
-
-      {/* <div className="search__border-bottom"></div> */}
     </section>
   );
 }

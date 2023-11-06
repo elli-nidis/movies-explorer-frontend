@@ -1,4 +1,4 @@
-const EMAIL_ADRESS_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+const EMAIL_ADRESS_REGEX = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.[a-z]{2,}";
 
 const ERROR_TEXT_SERVER =
   "На сервере произошла ошибка";

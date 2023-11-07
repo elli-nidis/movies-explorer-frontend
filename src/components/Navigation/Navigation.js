@@ -4,11 +4,11 @@ import './Navigation.css';
 import icon from '../../images/icon-account.svg';
 
 
-function Navigation({isLoggedIn, isOpenedMenu, onOpenMenu, onCloseMenu}) {
+function Navigation({loggedIn, isOpenedMenu, onOpenMenu, onCloseMenu}) {
 
   const location = useLocation();
 
-  return (isLoggedIn ?
+  return (loggedIn ?
     (
       <nav className={`navigation navigation_logged  ${isOpenedMenu ? "visible fixed" : ""}`}>
         <ul className="menu menu_logged">

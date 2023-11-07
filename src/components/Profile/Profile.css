@@ -2,7 +2,6 @@
   height: calc(100vh - (41.39px + 18px + 18px));
   box-sizing: border-box;
   justify-content: start;
-  /* align-content: center; */
   row-gap: unset;
   padding-top: 72px;
 }

@@ -20,7 +20,7 @@
 
 .techs__content-title {
   justify-self: center;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 50px;
   font-weight: 400;
   line-height: 1.16;
@@ -34,11 +34,11 @@
   display: grid;
   grid-template-columns: 460px;
   justify-self: center;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   color: #fff;
   text-align: center;
   margin: 0;
@@ -62,11 +62,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.21;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   color: #fff;
   list-style: none;
   background-color: #303030;
@@ -92,7 +92,7 @@
   .techs__content-text {
     font-size: 12px;
     line-height: 1.5;
-    letter-spacing: -.48px;
+    letter-spacing: -0.48px;
   }
 
   .techs__stack {

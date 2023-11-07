@@ -19,11 +19,11 @@
 }
 
 .about-me__title {
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 50px;
   font-weight: 400;
   line-height: 1.16;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   color: #fff;
   margin: 0;
   padding: 0;
@@ -41,7 +41,7 @@
 .about-me__occupation {
   grid-column: 1/2;
   align-self: self-end;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -53,7 +53,7 @@
 .about-me__description {
   grid-column: 1/2;
   align-self: self-end;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.57;
@@ -65,7 +65,7 @@
 .about-me__link {
   grid-column: 1/2;
   align-self: self-end;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.21;
@@ -76,11 +76,10 @@
 }
 
 .about-me__link:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 1040px) {
-
   .about-me {
     padding: 90px 50px;
   }
@@ -112,7 +111,6 @@
 }
 
 @media screen and (max-width: 744px) {
-
   .about-me {
     padding: 76px 14px;
   }

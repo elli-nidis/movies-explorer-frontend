@@ -9,4 +9,4 @@ function Main({children}) {
   );
 }
 
-export { Main };
+export default Main;

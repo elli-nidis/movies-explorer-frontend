@@ -19,18 +19,18 @@
 }
 
 .about-project__content-title {
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.21;
   color: #fff;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   margin: 0;
   padding: 0;
 }
 
 .about-project__content-text {
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
@@ -56,7 +56,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.21;
@@ -69,22 +69,21 @@
 
 .about-project__inscription:first-child {
   color: #000;
-  background-color: #3DDC84;
+  background-color: #3ddc84;
 }
 
 .about-project__label {
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.21;
   text-align: center;
-  color: #8B8B8B;
+  color: #8b8b8b;
   padding: 0px;
   margin: 0px;
 }
 
 @media screen and (max-width: 970px) {
-  
   .about-project {
     padding: 90px 50px;
   }
@@ -107,12 +106,11 @@
 
   .about-project__label {
     font-weight: 400;
-    color: #A0A0A0;
+    color: #a0a0a0;
   }
 }
 
 @media screen and (max-width: 610px) {
-
   .about-project {
     padding: 70px 18px 70px;
   }
@@ -126,7 +124,7 @@
   }
 
   .about-project__content-title {
-    font-size: 18px;    
+    font-size: 18px;
   }
 
   .about-project__content-title:last-of-type {

@@ -80,15 +80,15 @@
 }
 
 .movies-card__button_save {
-  background-image: url(../../images/save-button.svg);
+  background-image: url(../../../images/save-button.svg);
 }
 
 .movies-card__button_saved {
-  background-image: url(../../images/saved-button.svg);
+  background-image: url(../../../images/saved-button.svg);
 }
 
 .movies-card__button_delete {
-  background-image: url(../../images/delete-button.svg);
+  background-image: url(../../../images/delete-button.svg);
 }
 
 @media screen and (max-width: 1040px) {

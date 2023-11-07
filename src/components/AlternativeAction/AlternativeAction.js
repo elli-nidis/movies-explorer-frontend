@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import './AlternativeAction.css';
 
-function AlternativeAction() {
+function AlternativeAction({onClick}) {
   const location = useLocation();
+
   const alternativeActionDescription = location.pathname === "/profile" ? ""
   : location.pathname === "/signup" ? "Уже зарегистрированы? "
   : "Ещё не зарегистрированы? ";
@@ -14,13 +15,12 @@ function AlternativeAction() {
   return (
    <p className="alternative-action">
     {alternativeActionDescription}
-    <Link to={
-      location.pathname === "/profile" ? "/"
-      : location.pathname === "/signup" ? "/signin"
-      : "/signup"} 
-      className={`alternative-action__link ${location.pathname === "/profile" ? "alternative-action__link_pink" : ""}`}>
+    <button
+      className={`alternative-action__link ${location.pathname === "/profile" ? "alternative-action__link_pink" : ""}`}
+      onClick={onClick}
+      >
       {textLink}
-    </Link>
+    </button>
    </p>
   );
 }

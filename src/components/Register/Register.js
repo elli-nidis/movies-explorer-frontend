@@ -1,33 +1,36 @@
-import React, {useState} from "react";
-import { useLocation } from "react-router-dom";
-import './Register.css';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import { PageWithForm } from "../PageWithForm/PageWithForm";
-import { Form } from '../Form/Form';
+import Form from '../Form/Form';
 import { FormWrapper } from '../FormWrapper/FormWrapper';
 import { TitlePageWithForm } from '../TitlePageWithForm/TitlePageWithForm';
 import { AlternativeAction } from '../AlternativeAction/AlternativeAction';
 import { Logo } from '../Logo/Logo';
 
+import { EMAIL_ADRESS_REGEX } from "../../utils/constants";
+import useForm from "../../hooks/useForm";
 
-function Register() {
+function Register({ onRegister, isLoading }) {
+  const { enteredValues, errors, handleChangeInput, isFormValid } = useForm();
+
   const location = useLocation();
   const locationString = (location.pathname).match(/\w/gi).join("");
-  const err = {message: ""};
 
-  const [formValue, setFormValue] = useState({
-    name: "",
-    email: "",
-    password: ""
-  });
+   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const {name, value} = e.target;
-
-    setFormValue({
-      ...formValue,
-      [name]: value
+  function getSubmitForm(event) {
+    event.preventDefault();
+    onRegister({
+      name: enteredValues.name,
+      email: enteredValues.email,
+      password: enteredValues.password,
     });
-  };
+  }
+
+  function goToLogin() {
+    navigate('/signin');
+  }
 
   return (
     <PageWithForm clName={locationString} ariaLabel="раздел регистрации">
@@ -35,34 +38,70 @@ function Register() {
         <>
           <Logo />
           <TitlePageWithForm title="Добро пожаловать!"/>
-          <Form 
+          <Form
             name = {`form-${locationString}`}
             clName = {locationString}
-            textButton = {"Зарегистрироваться"}
+            textButton="Зарегистрироваться"
+            isDisabledButton={!isFormValid}
+            isLoading={isLoading}
+            onSubmit={getSubmitForm}
           >
             <>
-              <label htmlFor="input-name" className="form__label">
+              <label htmlFor="name-input" className="form__label">
                 Имя
-                <input className="form__input" id="input-name" type="text" name="name" value={formValue.name} onChange={handleChange} placeholder="Введите имя" minLength="1" maxLength="30" required />
-                <span className="form__error">{err.message || ""}</span>
+                <input
+                  name="name"
+                  className="form__input"
+                  id="name-input"
+                  type="text"
+                  onChange={handleChangeInput}
+                  value={enteredValues.name || ""}
+                  minLength="1"
+                  maxLength="30"
+                  placeholder="Введите имя"
+                  required
+                />
+                <span className="form__error">{errors.name || ""}</span>
               </label>
-              <label htmlFor="input-email" className="form__label">
+              <label htmlFor="email-input" className="form__label">
                 E-mail
-                <input className="form__input" id="input-email" type="email" name="email" value={formValue.email} onChange={handleChange} maxLength="30" placeholder="Введите e-mail" required />
-                <span className="form__error">{err.message || ""}</span>
+                <input
+                  name="email"
+                  className="form__input"
+                  id="email-input"
+                  type="email"
+                  onChange={handleChangeInput}
+                  pattern={EMAIL_ADRESS_REGEX}
+                  value={enteredValues.email || ""}
+                  maxLength="30"
+                  placeholder="Введите e-mail"
+                  required
+                />
+                <span className="form__error">{errors.email || ""}</span>
               </label>
-              <label htmlFor="input-password" className="form__label">
+              <label htmlFor="password-input" className="form__label">
                 Пароль
-                <input className={`form__input ${err.message ? "form__input_error" : ""}`} id="input-password" type="password" name="password" value={formValue.password} onChange={handleChange} placeholder="Введите пароль" minLength="8" maxLength="30" required />
-                <span className="form__error">{"ffff" || ""}</span>
+                <input
+                  name="password"
+                  className={`form__input ${errors.password ? "form__input_error" : ""}`}
+                  id="password-input"
+                  type="password"
+                  onChange={handleChangeInput}
+                  value={enteredValues.password || ""}
+                  minLength="4"
+                  maxLength="10"
+                  placeholder="Введите пароль"
+                  required
+                />
+                <span className="form__error">{errors.password || ""}</span>
               </label>
             </>
-          </Form>       
+          </Form>
         </>
       </FormWrapper>
-      <AlternativeAction/>
+      <AlternativeAction onClick={goToLogin}/>
     </PageWithForm>
   );
 }
 
-export {Register};
+export default Register;

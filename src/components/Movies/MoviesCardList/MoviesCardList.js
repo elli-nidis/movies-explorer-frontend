@@ -25,9 +25,9 @@ function MoviesCardList({
 
   function handleWithDisplayMovieCounter() {
     const display = window.innerWidth;
-    if (display > 1040) {
+    if (display > 1279) {
       setShownMovies(12);
-    } else if (display > 610) {
+    } else if (display > 767) {
       setShownMovies(8);
     } else {
       setShownMovies(5);
@@ -36,9 +36,9 @@ function MoviesCardList({
 
   function handleAddWithDisplayMovieClick() {
     const display = window.innerWidth;
-    if (display > 1040) {
+    if (display > 1279) {
       setShownMovies(shownMovies + 3);
-    } else if (display > 610) {
+    } else if (display > 767) {
       setShownMovies(shownMovies + 2);
     } else {
       setShownMovies(shownMovies + 2);

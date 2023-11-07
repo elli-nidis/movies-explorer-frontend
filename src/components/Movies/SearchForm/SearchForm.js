@@ -17,6 +17,13 @@ function SearchForm({ getSearchMoviesData, onFilterMovies, isShortFilm }) {
     }
   }
 
+  useEffect(() => {
+    if(query) {
+      getSearchMoviesData(query);
+    }
+  }, [isShortFilm]);
+
+
   function getCheckQueryInputForm(e) {
     setQuery(e.target.value);
   }
@@ -30,6 +37,7 @@ function SearchForm({ getSearchMoviesData, onFilterMovies, isShortFilm }) {
       setQuery(localQuery);
     }
   }, [location]);
+
 
   return (
     <section className="search">

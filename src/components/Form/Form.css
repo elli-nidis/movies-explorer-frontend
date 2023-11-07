@@ -150,7 +150,14 @@
   display: inline;
   font-size: 13px;
   font-weight: 500;
+  color: #c2c2c2;
   background-color: transparent;
+  /* cursor: pointer; */
+}
+
+.form__button_link-style:hover {
+  cursor: unset;
+  opacity: unset;
 }
 
 @media screen and (max-width: 850px) {

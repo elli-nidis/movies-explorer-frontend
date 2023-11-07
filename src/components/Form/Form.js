@@ -15,7 +15,7 @@ function Form({name, clName, textButton, onSubmit, isDisabledButton, isLoading, 
     <div className="form__button-wrapper">
       <p className="form__error-message">{err.message}</p>
       <button
-        className={`form__button ${location.pathname === "/profile" ? "form__button_link-style" : ""} ${(isDisabledButton ?? isLoading ?? isLastValues) ? "form__button_disabled" : ""}`}
+        className={`form__button ${(isDisabledButton ?? isLoading ?? isLastValues) ? (location.pathname === "/profile" ? "form__button_link-style" : "form__button_disabled")  : ""}`}
         aria-label={`кнопка ${textButton}`}
         type="submit"
         disabled={isDisabledButton}>

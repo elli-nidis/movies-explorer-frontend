@@ -5,7 +5,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import SearchError from "../SearchForm/SearchError/SearchError";
 import MoviesShowMoreButton from "../MoviesShowMoreButton/MoviesShowMoreButton";
 import Preloader from "../../Preloader/Preloader";
-import { ERROR_TEXT_SERVER, MOVIES_NOT_FOUND } from "../../../utils/constants";
+import { ERROR_TEXT_SERVER, MOVIES_NOT_FOUND, TABLET_SCREEN, COMPUTER_SCREEN } from "../../../utils/constants";
 
 function MoviesCardList({
   cards,
@@ -25,9 +25,9 @@ function MoviesCardList({
 
   function handleWithDisplayMovieCounter() {
     const display = window.innerWidth;
-    if (display > 1279) {
+    if (display > COMPUTER_SCREEN) {
       setShownMovies(12);
-    } else if (display > 767) {
+    } else if (display > TABLET_SCREEN) {
       setShownMovies(8);
     } else {
       setShownMovies(5);
@@ -36,9 +36,9 @@ function MoviesCardList({
 
   function handleAddWithDisplayMovieClick() {
     const display = window.innerWidth;
-    if (display > 1279) {
+    if (display > COMPUTER_SCREEN) {
       setShownMovies(shownMovies + 3);
-    } else if (display > 767) {
+    } else if (display > TABLET_SCREEN) {
       setShownMovies(shownMovies + 2);
     } else {
       setShownMovies(shownMovies + 2);

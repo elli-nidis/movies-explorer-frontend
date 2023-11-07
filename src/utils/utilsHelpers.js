@@ -1,12 +1,14 @@
+import { SHORT_FILM, MINUTES_IN_AN_HOUR } from "./constants";
+
 export function convertDurationToFullTime(duration) {
-  const hours = Math.floor(duration / 60);
-  const minutes = hours > 0 ? (duration % (hours * 60)).toString() : (duration).toString();
+  const hours = Math.floor(duration / MINUTES_IN_AN_HOUR);
+  const minutes = hours > 0 ? (duration % (hours * MINUTES_IN_AN_HOUR)).toString() : (duration).toString();
   const fullMinutes = minutes.length > 1 ? minutes : "0" +  minutes;
   return `${hours}ч ${fullMinutes}м`;
 }
 
 export function filterDurationMovies(movies) {
-  return movies.filter((movie) => movie.duration < 40);
+  return movies.filter((movie) => movie.duration < SHORT_FILM);
 }
 
 export function filterMovies(movies, query) {
